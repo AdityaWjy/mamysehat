@@ -3,7 +3,7 @@
     <div
       class="d-flex align-items-center justify-items-center flex-column text-center"
     >
-      <h1 class="blueOcean font-semibold">Program</h1>
+      <h1 class="blueOcean font-semibold">Testimoni</h1>
       <p class="capitalize text-center fw-normal text-content">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet
         nulla auctor,
@@ -75,11 +75,11 @@
 
   .content-program {
     font-size: 10px;
-    margin: 0;
+    margin-bottom: 10px;
   }
 
   .background-box {
-    width: 260px;
+    width: 310px;
   }
 }
 </style>
