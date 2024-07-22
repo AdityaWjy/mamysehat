@@ -93,7 +93,7 @@ img {
 
   img {
     width: 100px;
-    height: 100px;
+    height: 105px;
   }
 
   .btn-custom-mobile {

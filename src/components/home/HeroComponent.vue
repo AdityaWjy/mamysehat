@@ -27,7 +27,7 @@
           </div>
         </div>
         <div class="col-md-6 d-flex justify-content-center align-self-center">
-          <img src="/images/hero-images.png" width="450px" />
+          <img src="/images/hero-images.png" width="4500px" />
         </div>
       </div>
     </div>
@@ -40,7 +40,7 @@
         <div
           class="col-md-6 mb-2 d-flex justify-content-center align-self-center mobile"
         >
-          <img src="/images/hero-images.png" width="270px" />
+          <img src="/images/hero-images.png" width="310px" />
         </div>
         <div class="col-md-6">
           <div class="d-flex h-100">
