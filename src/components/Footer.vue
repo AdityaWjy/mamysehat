@@ -6,7 +6,7 @@
       style="background-color: #262626"
     >
       <!-- Section: Links  -->
-      <section class="py-5">
+      <section class="py-1">
         <div class="container text-center text-md-start mt-5">
           <!-- Grid row -->
           <div class="row mt-3">
