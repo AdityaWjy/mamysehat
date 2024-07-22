@@ -14,7 +14,7 @@
     </div>
 
     <div
-      class="d-flex flex-column flex-xl-row mt-2 mt-xl-4 align-items-center justify-content-center gap-1 gap-xl-5"
+      class="d-flex flex-column flex-xl-row mt-2 mt-xl-4 align-items-center justify-content-center gap-1 gap-xl-5 mb-5"
     >
       <div class="background-box mb-2 mb-xl-0">
         <div class="d-flex rounded" style="background-color: #1e293b">
