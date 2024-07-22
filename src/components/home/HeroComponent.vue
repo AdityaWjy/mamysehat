@@ -27,7 +27,7 @@
           </div>
         </div>
         <div class="col-md-6 d-flex justify-content-center align-self-center">
-          <img src="/images/hero-images.png" width="4500px" />
+          <img src="/images/hero-images.png" width="450px" />
         </div>
       </div>
     </div>
@@ -36,7 +36,7 @@
 
     <div class="d-sm-block d-md-none">
       <!-- Div display mobile -->
-      <div class="row mt-5">
+      <div class="row row-mobile">
         <div
           class="col-md-6 mb-2 d-flex justify-content-center align-self-center mobile"
         >
@@ -86,6 +86,16 @@ h2 {
 }
 
 .hero {
-  margin-top: 50px;
+  margin-top: 100px;
+}
+
+@media (max-width: 500px) {
+  .hero {
+    margin-top: 10px;
+  }
+
+  .row-mobile {
+    margin-top: 34px;
+  }
 }
 </style>
