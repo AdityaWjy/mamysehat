@@ -1,5 +1,5 @@
 <template>
-  <div class="program-component mb-5">
+  <div class="testimoni">
     <div
       class="d-flex align-items-center justify-items-center flex-column text-center"
     >
@@ -13,58 +13,49 @@
       </p>
     </div>
 
-    <!-- program -->
-
     <div
       class="d-flex flex-column flex-xl-row mt-2 mt-xl-4 align-items-center justify-content-center gap-1 gap-xl-5"
     >
       <div class="background-box mb-2 mb-xl-0">
         <div class="d-flex rounded" style="background-color: #1e293b">
-          <div class="img">
-            <img src="/images/training.png" class="rounded" alt="Training" />
-          </div>
           <div class="py-2 px-2 p-xl-3">
-            <h2 class="text-white font-semibold">Webinar</h2>
-            <p class="text-white-50 content-program">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            <p class="blueOcean content-program">Sarah Dayon</p>
+            <p class="text-white-50 mb-2 content-program">
+              Staff Engineer, Algolia
             </p>
-            <button class="btn-custom-mobile">Read More</button>
+            <p class="text-white content-program">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit
+              amet nulla auctor. Sed sit amet nulla auctor.
+            </p>
           </div>
         </div>
       </div>
-      <div class="background-box">
+      <div class="background-box mb-2 mb-xl-0">
         <div class="d-flex rounded" style="background-color: #1e293b">
-          <div class="img">
-            <img src="/images/training.png" alt="Training" />
-          </div>
           <div class="py-2 px-2 p-xl-3">
-            <h2 class="text-white font-semibold">Training</h2>
-            <p class="text-white-50 content-program">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            <p class="blueOcean content-program">Sarah Dayon</p>
+            <p class="text-white-50 mb-2 content-program">
+              Staff Engineer, Algolia
             </p>
-            <button class="btn-custom-mobile">Read More</button>
+            <p class="text-white content-program fw-normal">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit
+              amet nulla auctor. Sed sit amet nulla auctor.
+            </p>
           </div>
         </div>
       </div>
     </div>
   </div>
 </template>
-<script>
-export default {};
-</script>
+
 <style scoped>
+.background-box {
+  width: 460px;
+}
+
 .text-content {
   width: 800px;
   font-size: 18px;
-}
-
-img {
-  width: 200px;
-  height: 200px;
-}
-
-.background-box {
-  width: 460px;
 }
 
 @media (max-width: 500px) {
@@ -89,22 +80,6 @@ img {
 
   .background-box {
     width: 260px;
-  }
-
-  img {
-    width: 100px;
-    height: 105px;
-  }
-
-  .btn-custom-mobile {
-    width: 130px;
-
-    padding-top: 6px;
-    padding-bottom: 6px;
-
-    font-size: 10px;
-    margin-top: 5px;
-    text-align: center;
   }
 }
 </style>
