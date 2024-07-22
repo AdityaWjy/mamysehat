@@ -79,21 +79,21 @@ img {
   }
 
   h2 {
-    font-size: 10px;
+    font-size: 15px;
   }
 
   .content-program {
     font-size: 10px;
-    margin: 0;
+    margin-bottom: 10px;
   }
 
   .background-box {
-    width: 260px;
+    width: 310px;
   }
 
   img {
-    width: 100px;
-    height: 105px;
+    width: 120px;
+    height: 120px;
   }
 
   .btn-custom-mobile {
