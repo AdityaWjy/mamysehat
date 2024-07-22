@@ -1,0 +1,47 @@
+.btn-custom {
+  background-color: #2d90dc;
+  border: 2px solid #2d90dc;
+  border-radius: 8px;
+  font-weight: 600;
+  color: white;
+  padding-top: 13px;
+  padding-bottom: 13px;
+  padding-left: 23px;
+  padding-right: 23px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.btn-custom:hover {
+  background-color: #ffffff;
+  color: #2d90dc;
+  transition-delay: 0.1s;
+}
+
+.btn-custom-mobile {
+  background-color: #2d90dc;
+  border: 2px solid #2d90dc;
+  border-radius: 8px;
+  font-weight: 500;
+  color: white;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  padding-left: 23px;
+  padding-right: 23px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.btn-custom-mobile:hover {
+  background-color: #ffffff;
+  color: #000000;
+  transition-delay: 0.1s;
+}
+
+.blueOcean {
+  color: #2d90dc;
+}
+
+.darkOcean {
+  color: #1e293b;
+}
