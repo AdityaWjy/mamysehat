@@ -75,7 +75,7 @@
 
   .content-program {
     font-size: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 0px;
   }
 
   .background-box {
