@@ -45,7 +45,7 @@
         <div class="col-md-6">
           <div class="d-flex h-100">
             <div class="justify-content-center align-self-center container">
-              <h2>
+              <h2 class="mt-3">
                 Mamy Sehat
 
                 <span class="blueOcean">Academy</span>
