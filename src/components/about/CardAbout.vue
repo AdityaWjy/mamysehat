@@ -69,7 +69,8 @@ img {
 
 @media (max-width: 500px) {
   .text-content {
-    width: 270px;
+    width: auto;
+    text-align: justify;
     font-size: 10px;
   }
 
