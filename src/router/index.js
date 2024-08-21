@@ -38,6 +38,12 @@ const routes = [
     name: 'contact',
     component: () => import('../views/ContactView.vue')
   },
+
+  {
+    path: '/404',
+    name: '404',
+    component: () => import('../views/404Page.vue')
+  },
 ]
 
 const router = new VueRouter({
