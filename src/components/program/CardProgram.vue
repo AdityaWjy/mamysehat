@@ -35,8 +35,15 @@
 
       <div class="m-auto">
         <h3 class="title">{{ program.title }}</h3>
-        <p class="grayOcean">{{ program.date }}</p>
-        <button class="btn-custom w-100">Read More</button>
+        <p class="grayOcean mb-4">{{ program.date }}</p>
+
+        <router-link
+          :to="'/program/' + program.id"
+          class="btn-custom text-decoration-none text-center"
+          style="display: block"
+        >
+          Read More</router-link
+        >
       </div>
     </div>
   </div>

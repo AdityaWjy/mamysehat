@@ -3,31 +3,38 @@
     {
       "id": 1,
       "title": "Seminar Kesehatan",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       "date": "tanggal 17/08/2024 pada Balai Kota Surabaya",
       "type": "seminar",
-      "kemenkes": true
+      "kemenkes": true,
+      "image": "seminar.png"
     },
     {
       "id": 2,
       "title": "Workshop Kesehatan",
       "date": "tanggal 17/08/2024 pada Balai Kota Surabaya",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       "type": "seminar",
-      "kemenkes": false
+      "kemenkes": false,
+      "image": "seminar.png"
     },
-
     {
       "id": 3,
       "title": "Webinar Online",
       "date": "tanggal 17/08/2024 pada Balai Kota Surabaya",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       "type": "webinar",
-      "kemenkes": false
+      "kemenkes": false,
+      "image": "seminar.png"
     },
     {
       "id": 4,
       "title": "Webinar Offline",
       "date": "tanggal 17/08/2024 pada Balai Kota Surabaya",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       "type": "webinar",
-      "kemenkes": false
+      "kemenkes": false,
+      "image": "seminar.png"
     }
   ]
 }

@@ -1,0 +1,92 @@
+<template>
+  <div class="contact">
+    <div class="container mt-4">
+      <div class="row d-flex align-items-center justify-content-between">
+        <!-- Google Maps Embed -->
+        <div class="col-md-6 mb-4 order-1 order-md-2">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3957.798540719774!2d112.7600813!3d-7.263753800000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd7f9000d543df9%3A0x85dee12b12751548!2sGafin%20Lab!5e0!3m2!1sid!2sid!4v1724237505445!5m2!1sid!2sid"
+            width="100%"
+            height="350"
+            style="border: 0"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+
+        <!-- Contact Information -->
+        <div class="col-md-5 contact-page order-2 order-md-1">
+          <h3 class="text-center">Contact Us</h3>
+          <p class="text-center">
+            In its service to provide the best for you. Contact us if you have
+            any questions or complaints to submit.
+          </p>
+          <ul class="list-unstyled">
+            <li
+              class="mb-3 d-flex d-xl-block flex-column flex-md-row align-items-center justify-content-center"
+            >
+              <img
+                src="../contact/assets/instagram.png"
+                width="32"
+                height="32"
+                class="me-2 mb-2 mb-md-0"
+              />
+              <a
+                href="https://www.instagram.com/gafinlab.id?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+                class="text-decoration-none text-dark"
+                target="_blank"
+                >mamysehatacademy.id</a
+              >
+            </li>
+            <li
+              class="mb-3 d-flex d-xl-block flex-column flex-md-row align-items-center justify-content-center"
+            >
+              <img
+                src="../contact/assets/envelope-plus.png"
+                width="25"
+                class="me-2 mb-2 mb-md-0"
+              />
+              <a
+                href="mailto:info.mamysehatacademy@gmail.com"
+                class="text-decoration-none text-dark"
+                target="_blank"
+                >info.mamysehatacademy@gmail.com</a
+              >
+            </li>
+            <li
+              class="mb-3 d-flex d-xl-block flex-column flex-md-row align-items-center justify-content-center"
+            >
+              <img
+                src="../contact/assets/phone.png"
+                width="25"
+                class="me-2 mb-2 mb-md-0"
+              />
+              <a
+                href="https://wa.me/+6285179642079"
+                class="text-decoration-none text-dark"
+                target="_blank"
+                >+62 857-7964-2079</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<style scoped>
+h4 {
+  margin-bottom: 20px;
+}
+
+.container {
+  margin-top: 100px;
+}
+
+.contact {
+  margin-top: 100px;
+  margin-bottom: 50px;
+}
+</style>
