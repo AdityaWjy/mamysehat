@@ -14,7 +14,7 @@
       <div class="row row-card mt-4 gap-5">
         <div
           class="col-12 col-md-6 col-lg-4 d-flex justify-content-center"
-          v-for="program in trainingPrograms"
+          v-for="program in programs"
           :key="program.id"
         >
           <CardProgram :program="program" />
@@ -31,18 +31,6 @@
         habitasse in velit fringilla feugiat senectus in.
       </p>
 
-      <!-- List program webinar start -->
-
-      <div class="row row-card mt-4 gap-5">
-        <div
-          class="col-12 col-md-6 col-lg-4 d-flex justify-content-center"
-          v-for="program in webinarPrograms"
-          :key="program.id"
-        >
-          <CardProgram :program="program" />
-        </div>
-      </div>
-
       <!-- List program webinar end -->
     </div>
   </div>
@@ -57,26 +45,24 @@ export default {
   data() {
     return {
       programs: [],
-      trainingPrograms: [],
-      webinarPrograms: [],
     };
   },
 
   methods: {
     async fetchPrograms() {
       try {
-        const response = await axios.get(getPrograms);
-        this.programs = response.data;
-
-        // Filter program menjadi training dan webinar
-        this.trainingPrograms = this.programs.filter((program) =>
-          ["seminar"].includes(program.type)
+        const response = await axios.get(
+          "https://fb5f-2001-448a-c0f0-a838-498e-263d-d842-59e0.ngrok-free.app/api",
+          {
+            // with ngrox
+            headers: {
+              "X-Requested-With": "XMLHttpRequest",
+            },
+          }
         );
-        this.webinarPrograms = this.programs.filter(
-          (program) => program.type === "webinar"
-        );
+        this.data = response.data;
       } catch (error) {
-        console.error("Error: ", error);
+        console.error(error);
       }
     },
   },
