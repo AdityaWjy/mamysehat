@@ -11,55 +11,13 @@
 
       <!-- List program training start -->
 
-      <div
-        class="d-flex flex-wrap align-items-center justify-content-start mt-5 gap-5"
-      >
+      <div class="row row-card mt-4 gap-5">
         <div
-          class="text-white rounded px-5 py-5 position-relative"
-          style="width: 20rem; background-color: #1e293b"
+          class="col-12 col-md-6 col-lg-4 d-flex justify-content-center"
+          v-for="program in trainingPrograms"
+          :key="program.id"
         >
-          <!-- Badge bulat di ujung kanan atas -->
-          <div
-            class="badge-circle position-absolute top-0 end-0 bg-danger"
-            style="
-              width: 70px;
-              height: 70px;
-              border-radius: 50%;
-              display: flex;
-              justify-content: center;
-              align-items: center;
-              transform: translate(30%, -30%);
-            "
-          >
-            <span
-              class="fw-bold"
-              style="
-                transform: rotate(25deg);
-                display: block;
-                text-align: center;
-                color: white;
-                font-size: 10px;
-              "
-            >
-              15 SKP <br />
-              Kemenkes
-            </span>
-          </div>
-
-          <h1 class="title">Seminar Kesehatan</h1>
-          <p class="grayOcean">Tanggal 17/08/2024 pada Balai Kota Surabaya</p>
-          <button class="btn-custom w-100">Read More</button>
-        </div>
-
-        <div
-          class="text-white rounded px-5 py-5"
-          style="width: 23rem; background-color: #1e293b"
-        >
-          <h1 class="title">Workshop</h1>
-
-          <p class="grayOcean">Tanggal 17/08/2024 pada Balai Kota Surabaya</p>
-
-          <button class="btn-custom w-100">Read More</button>
+          <CardProgram :program="program" />
         </div>
       </div>
 
@@ -75,65 +33,64 @@
 
       <!-- List program webinar start -->
 
-      <div
-        class="d-flex flex-wrap align-items-center justify-content-start mt-5 gap-5"
-      >
+      <div class="row row-card mt-4 gap-5">
         <div
-          class="text-white rounded px-5 py-5 position-relative"
-          style="width: 20rem; background-color: #1e293b"
+          class="col-12 col-md-6 col-lg-4 d-flex justify-content-center"
+          v-for="program in webinarPrograms"
+          :key="program.id"
         >
-          <!-- Badge bulat di ujung kanan atas -->
-          <div
-            class="badge-circle position-absolute top-0 end-0 bg-danger"
-            style="
-              width: 70px;
-              height: 70px;
-              border-radius: 50%;
-              display: flex;
-              justify-content: center;
-              align-items: center;
-              transform: translate(30%, -30%);
-            "
-          >
-            <span
-              class="fw-bold"
-              style="
-                transform: rotate(25deg);
-                display: block;
-                text-align: center;
-                color: white;
-                font-size: 10px;
-              "
-            >
-              15 SKP <br />
-              Kemenkes
-            </span>
-          </div>
-
-          <h1 class="title">Webinar Online</h1>
-          <p class="grayOcean">Tanggal 17/08/2024 pada Balai Kota Surabaya</p>
-          <button class="btn-custom w-100">Read More</button>
-        </div>
-
-        <div
-          class="text-white rounded px-5 py-5"
-          style="width: 23rem; background-color: #1e293b"
-        >
-          <h1 class="title">webinar Offline</h1>
-
-          <p class="grayOcean">Tanggal 17/08/2024 pada Balai Kota Surabaya</p>
-
-          <button class="btn-custom w-100">Read More</button>
+          <CardProgram :program="program" />
         </div>
       </div>
 
-      <!-- List program training end -->
+      <!-- List program webinar end -->
     </div>
   </div>
 </template>
+
 <script>
-export default {};
+import axios from "axios";
+import { getPrograms } from "@/services/api.js";
+import CardProgram from "./CardProgram.vue";
+
+export default {
+  data() {
+    return {
+      programs: [],
+      trainingPrograms: [],
+      webinarPrograms: [],
+    };
+  },
+
+  methods: {
+    async fetchPrograms() {
+      try {
+        const response = await axios.get(getPrograms);
+        this.programs = response.data;
+
+        // Filter program menjadi training dan webinar
+        this.trainingPrograms = this.programs.filter((program) =>
+          ["seminar"].includes(program.type)
+        );
+        this.webinarPrograms = this.programs.filter(
+          (program) => program.type === "webinar"
+        );
+      } catch (error) {
+        console.error("Error: ", error);
+      }
+    },
+  },
+
+  mounted() {
+    this.fetchPrograms();
+  },
+
+  components: {
+    CardProgram,
+  },
+};
 </script>
+
 <style scoped>
 .training {
   margin-top: 100px;
@@ -151,6 +108,10 @@ export default {};
 @media (max-width: 500px) {
   .text-content {
     width: 100%;
+  }
+
+  .row-card {
+    row-gap: 15px;
   }
 }
 </style>

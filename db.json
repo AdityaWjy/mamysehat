@@ -1,0 +1,33 @@
+{
+  "programs": [
+    {
+      "id": 1,
+      "title": "Seminar Kesehatan",
+      "date": "tanggal 17/08/2024 pada Balai Kota Surabaya",
+      "type": "seminar",
+      "kemenkes": true
+    },
+    {
+      "id": 2,
+      "title": "Workshop Kesehatan",
+      "date": "tanggal 17/08/2024 pada Balai Kota Surabaya",
+      "type": "seminar",
+      "kemenkes": false
+    },
+
+    {
+      "id": 3,
+      "title": "Webinar Online",
+      "date": "tanggal 17/08/2024 pada Balai Kota Surabaya",
+      "type": "webinar",
+      "kemenkes": false
+    },
+    {
+      "id": 4,
+      "title": "Webinar Offline",
+      "date": "tanggal 17/08/2024 pada Balai Kota Surabaya",
+      "type": "webinar",
+      "kemenkes": false
+    }
+  ]
+}
