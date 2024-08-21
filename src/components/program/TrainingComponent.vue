@@ -51,16 +51,8 @@ export default {
   methods: {
     async fetchPrograms() {
       try {
-        const response = await axios.get(
-          "https://fb5f-2001-448a-c0f0-a838-498e-263d-d842-59e0.ngrok-free.app/api",
-          {
-            // with ngrox
-            headers: {
-              "X-Requested-With": "XMLHttpRequest",
-            },
-          }
-        );
-        this.data = response.data;
+        const response = await axios.get("http://127.0.0.:8000/api/acaras");
+        this.programs = response.data;
       } catch (error) {
         console.error(error);
       }
