@@ -118,7 +118,7 @@
                   src="../assets/images/Social/phone.png"
                   alt="Phone"
                   class="mb-2"
-                  width="25"
+                  width="20"
                 />
                 <p class="text-center text-xl-start pt-2">+62 857-7964-2079</p>
               </a>
