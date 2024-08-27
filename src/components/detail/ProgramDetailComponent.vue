@@ -3,22 +3,38 @@
     <div class="row my-5 gap-5">
       <div class="col-md-6">
         <img
-          :src="'/images/program/' + program.image"
+          src="./details.png"
           alt="image"
           class="img-fluid shadow-lg w-100 h-100"
         />
       </div>
       <div class="col-md-5 mt-">
-        <h2>{{ program.title }}</h2>
-        <p class="text-description">{{ program.description }}</p>
+        <h4 class="fw-semibold">{{ program.nama_acara }}</h4>
+        <p class="text-description">{{ program.deskripsi }}</p>
 
         <div class="personal-information">
           <h4>Personal Information</h4>
           <p class="text-description">
-            Untuk pendaftaran bisa mengisi data dibawa ini. Pembayaran dilakukan
-            via transfer ke nomor rekening berikut:
-            <span class="fw-bold">142-0088-111-777</span> (Bank Mandiri) a/n
-            <span class="fw-bold">PT. Mamy Sehat Indonesia</span>
+            Acara {{ program.nama_acara }} dimulai pada tanggal
+            <span class="fw-semibold">{{
+              formatCustomDate(program.tgl_mulai)
+            }}</span>
+            bertempat pada
+            <span class="fw-semibold">{{ program.lokasi }}</span> dengan harga
+            <span class="fw-semibold">{{ hargaSekarang | currency }}</span> dan
+            acara akan diakhiri pada tanggal
+            <span class="fw-semibold">{{
+              formatCustomDate(program.tgl_akhir)
+            }}</span>
+
+            <br />
+
+            <span class="fw-semibold"
+              >Contact Person:
+              <a :href="program.wa_link" target="_blank" class="text-dark"
+                >PT. Mamy Sehat Indonesia</a
+              >
+            </span>
           </p>
         </div>
 
@@ -170,6 +186,7 @@
 
 <script>
 import axios from "axios";
+import moment from "moment";
 
 export default {
   data() {
@@ -182,16 +199,38 @@ export default {
     this.fetchProgram();
   },
 
+  computed: {
+    hargaSekarang() {
+      const today = new Date();
+      const tglEarly = new Date(this.program.tgl_early);
+
+      // check apakah hari ini masih di periode harga early
+      if (today <= tglEarly) {
+        return this.program.harga_early;
+      } else {
+        return this.program.harga_reguler;
+      }
+    },
+  },
+
   methods: {
+    formatCustomDate(date) {
+      const dateObject = new Date(date);
+      const year = dateObject.getFullYear();
+      const month = (dateObject.getMonth() + 1).toString().padStart(2, "0");
+      const day = dateObject.getDate().toString().padStart(2, "0");
+      return `${year}/${month}/${day}`;
+    },
+
     async fetchProgram() {
       try {
         const id = this.$route.params.id;
 
         if (id) {
           const response = await axios.get(
-            `http://localhost:3000/programs/${id}`
+            `http://127.0.0.1:8000/api/acaras/${id}`
           );
-          this.program = response.data;
+          this.program = response.data.data;
         } else {
           console.error("Parameter id tidak tersedia");
         }

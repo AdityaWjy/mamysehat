@@ -5,6 +5,13 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap/dist/js/bootstrap.js'
 import './main.css'
 
+// Currency Rupiah
+Vue.filter('currency', function (value) {
+  return new Intl.NumberFormat('id-ID', {
+    style: 'currency',
+    currency: 'IDR'
+  }).format(value)
+})
 
 Vue.config.productionTip = false
 

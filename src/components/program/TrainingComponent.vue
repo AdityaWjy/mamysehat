@@ -1,7 +1,7 @@
 <template>
   <div class="training">
     <div class="container mt-5">
-      <h1 class="text-center text-xl-start blueOcean">Training</h1>
+      <h1 class="text-center text-xl-start blueOcean">Program</h1>
 
       <p class="capitalize text-center text-xl-start fw-normal text-content">
         Lorem ipsum dolor sit amet consectetur. Tempus tincidunt etiam eget elit
@@ -20,18 +20,6 @@
           <CardProgram :program="program" />
         </div>
       </div>
-
-      <!-- List program training end -->
-
-      <h1 class="text-center text-xl-start blueOcean mt-5">Webinar</h1>
-
-      <p class="capitalize text-center text-xl-start fw-normal text-content">
-        Lorem ipsum dolor sit amet consectetur. Tempus tincidunt etiam eget elit
-        id imperdiet et. Cras eu sit dignissim lorem nibh et. Ac cum eget
-        habitasse in velit fringilla feugiat senectus in.
-      </p>
-
-      <!-- List program webinar end -->
     </div>
   </div>
 </template>
@@ -51,7 +39,7 @@ export default {
   methods: {
     async fetchPrograms() {
       try {
-        const response = await axios.get("http://127.0.0.:8000/api/acaras");
+        const response = await axios.get(getPrograms);
         this.programs = response.data;
       } catch (error) {
         console.error(error);

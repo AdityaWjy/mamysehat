@@ -5,7 +5,7 @@
         <!-- Google Maps Embed -->
         <div class="col-md-6 mb-4 order-1 order-md-2">
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3957.798540719774!2d112.7600813!3d-7.263753800000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd7f9000d543df9%3A0x85dee12b12751548!2sGafin%20Lab!5e0!3m2!1sid!2sid!4v1724237505445!5m2!1sid!2sid"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3957.2950165410434!2d112.74437507476108!3d-7.320720992687424!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd7fb1115f1e9bb%3A0x1028ea492394b269!2sEl%20Shafi!5e0!3m2!1sid!2sid!4v1724761869739!5m2!1sid!2sid"
             width="100%"
             height="350"
             style="border: 0"
