@@ -28,7 +28,9 @@
             <p class="text-white-50 content-program">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit.
             </p>
-            <button class="btn-custom-mobile">Read More</button>
+            <button class="btn-custom-mobile" @click="navigateToProgram">
+              Read More
+            </button>
           </div>
         </div>
       </div>
@@ -42,7 +44,9 @@
             <p class="text-white-50 content-program">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit.
             </p>
-            <button class="btn-custom-mobile">Read More</button>
+            <button class="btn-custom-mobile" @click="navigateToProgram">
+              Read More
+            </button>
           </div>
         </div>
       </div>
@@ -50,7 +54,13 @@
   </div>
 </template>
 <script>
-export default {};
+export default {
+  methods: {
+    navigateToProgram() {
+      this.$router.push({ name: "program" });
+    },
+  },
+};
 </script>
 <style scoped>
 .text-content {

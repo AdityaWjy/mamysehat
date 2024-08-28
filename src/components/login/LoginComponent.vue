@@ -1,6 +1,6 @@
 <template>
   <div class="program-detail">
-    <div class="row my-4 gap-6">
+    <div class="row my-5 gap-6">
       <div class="col-md-6">
         <img
           src="/favicon.ico"
@@ -13,13 +13,13 @@
         <!-- form login -->
 
         <form class="mt-3 mt-xl-0 ms-xl-5">
-          <h3>Register Pengguna</h3>
+          <h3>Login Pengguna</h3>
 
           <div class="row mb-3">
             <div class="col-md-6">
               <label
                 for="namaLengkap"
-                class="form-label fw-semibold"
+                class="form-label fw-semibold border-dark-subtle"
                 style="font-size: 14px"
                 >Nama Lengkap:</label
               >
@@ -50,7 +50,7 @@
             <div class="col-md-6">
               <label
                 for="email"
-                class="form-label fw-semibold"
+                class="form-label fw-semibold border-dark-subtle"
                 style="font-size: 14px"
                 >Alamat Email:</label
               >
@@ -141,15 +141,13 @@
 
           <div class="row">
             <div class="col">
-              <button type="submit" class="btn btn-primary w-100">
-                Register
-              </button>
+              <button type="submit" class="btn btn-primary w-100">Login</button>
               <p class="text-center mt-3 mt-x-0">
-                Already have an account?
+                Don't have an account?
                 <router-link
-                  to="/login"
+                  to="/register"
                   class="text-decoration-none fw-semibold"
-                  >Sign In</router-link
+                  >Sign Up</router-link
                 >
               </p>
             </div>

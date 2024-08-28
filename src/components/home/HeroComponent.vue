@@ -14,7 +14,7 @@
                 <span class="blueOcean">Academy</span>
               </h1>
 
-              <p class="capitalize fw-normal w-75" style="font-size: 18px">
+              <p class="capitalize fw-normal w-75 mb-4" style="font-size: 18px">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit
                 amet nulla auctor,
                 <span class="blueOcean font-bold">vestibulum</span> magna.
@@ -22,7 +22,11 @@
                 convallis ex.
               </p>
 
-              <button class="btn-custom">Get Our Service</button>
+              <router-link
+                to="/register"
+                class="btn-custom text-decoration-none"
+                >Get Our Service</router-link
+              >
             </div>
           </div>
         </div>
@@ -59,7 +63,11 @@
                 convallis ex.
               </p>
 
-              <button class="btn-custom-mobile">Get Our Service</button>
+              <router-link
+                to="/register"
+                class="btn-custom-mobile text-decoration-none"
+                >Get Our Service</router-link
+              >
             </div>
           </div>
         </div>
