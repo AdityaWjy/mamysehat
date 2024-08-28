@@ -44,6 +44,12 @@ const routes = [
     name: '404',
     component: () => import('../views/404Page.vue')
   },
+
+  {
+    path: '/register',
+    name: 'register',
+    component: () => import('../views/Register.vue')
+  },
 ]
 
 const router = new VueRouter({

@@ -17,8 +17,11 @@
                 kesehatan dengan pengetahuan dan keterampilan praktisi kesehatan
                 melalui program-program edukasi yang komprehensif dan inovatif.
               </p>
-
-              <button class="btn-custom px-5">Hubungi Kami</button>
+              <router-link
+                to="/contact"
+                class="text-white fw-semibold px-4 btn btn-primary text-decoration-none"
+                >Hubungi Kami</router-link
+              >
             </div>
           </div>
         </div>
@@ -51,7 +54,11 @@
                 melalui program-program edukasi yang komprehensif dan inovatif.
               </p>
 
-              <button class="btn-custom-mobile">Hubungi Kami</button>
+              <router-link
+                to="/contact"
+                class="btn-custom-mobile px-5 capitalize text-decoration-none"
+                >Hubungi Kami</router-link
+              >
             </div>
           </div>
         </div>

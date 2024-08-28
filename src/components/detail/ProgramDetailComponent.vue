@@ -3,7 +3,7 @@
     <div class="row my-5 gap-5">
       <div class="col-md-6">
         <img
-          src="./details.png"
+          src="/images/program/seminar.png"
           alt="image"
           class="img-fluid shadow-lg w-100 h-100"
         />
@@ -38,145 +38,13 @@
           </p>
         </div>
 
-        <form>
-          <div class="row mb-3">
-            <div class="col-md-6">
-              <label
-                for="namaLengkap"
-                class="form-label fw-semibold border-dark-subtle"
-                style="font-size: 14px"
-                >Nama Lengkap & Gelar:</label
-              >
-              <input
-                type="text"
-                class="form-control border border-dark-subtle"
-                id="namaLengkap"
-                required
-              />
-            </div>
-            <div class="col-md-6">
-              <label
-                for="email"
-                class="form-label fw-semibold"
-                style="font-size: 14px"
-                >Alamat Email:</label
-              >
-              <input
-                type="email"
-                class="form-control border border-dark-subtle"
-                id="email"
-                required
-              />
-            </div>
-          </div>
-
-          <div class="row mb-3">
-            <div class="col-md-6">
-              <label
-                for="nik"
-                class="form-label fw-semibold"
-                style="font-size: 14px"
-                >NIK:</label
-              >
-              <input
-                type="text"
-                class="form-control border border-dark-subtle"
-                id="nik"
-                placeholder=""
-                required
-              />
-            </div>
-            <div class="col-md-6">
-              <label
-                for="noWa"
-                class="form-label fw-semibold"
-                style="font-size: 14px"
-                >No. WhatsApp:</label
-              >
-              <input
-                type="text"
-                class="form-control border border-dark-subtle"
-                id="noWa"
-                placeholder=""
-                required
-              />
-            </div>
-          </div>
-
-          <div class="row mb-3">
-            <div class="col-md-6">
-              <label
-                for="AsalInstuisi"
-                class="form-label fw-semibold"
-                style="font-size: 14px"
-                >Asal Institusi:</label
-              >
-              <input
-                type="text"
-                class="form-control border border-dark-subtle"
-                id="AsalInstuisi"
-                placeholder=""
-                required
-              />
-            </div>
-            <div class="col-md-6">
-              <label
-                for="kotaAsal"
-                class="form-label fw-semibold"
-                style="font-size: 14px"
-                >Kota Asal:</label
-              >
-              <input
-                type="text"
-                class="form-control border border-dark-subtle"
-                id="kotaAsal"
-                placeholder=""
-                required
-              />
-            </div>
-          </div>
-
-          <div class="row mb-3">
-            <div class="col-md-6">
-              <label
-                for="profesi"
-                class="form-label fw-semibold"
-                style="font-size: 14px"
-                >Profesi:</label
-              >
-              <input
-                type="text"
-                class="form-control border border-dark-subtle"
-                id="profesi"
-                placeholder=""
-                required
-              />
-            </div>
-            <div class="col-md-6">
-              <label
-                for="buktiBayar"
-                class="form-label fw-semibold"
-                style="font-size: 14px"
-                >Bukti Pembayaran:</label
-              >
-              <input
-                type="file"
-                class="form-control border border-dark-subtle"
-                id="buktiBayar"
-                placeholder=""
-                required
-              />
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col">
-              <button type="submit" class="btn btn-primary w-100 fw-semibold">
-                Submit
-              </button>
-            </div>
-          </div>
-        </form>
+        <button
+          type="submit"
+          @click="routePendaftar"
+          class="btn btn-primary w-100 fw-semibold"
+        >
+          Ikut Program Acara
+        </button>
       </div>
     </div>
 
@@ -187,6 +55,7 @@
 <script>
 import axios from "axios";
 import moment from "moment";
+import { routePendaftar } from "../../services/api";
 
 export default {
   data() {
@@ -236,6 +105,23 @@ export default {
         }
       } catch (error) {
         console.error(error);
+      }
+    },
+
+    // route pendaftar
+
+    async routePendaftar() {
+      try {
+        const response = await axios.post(
+          "http://127.0.0.1:8000/api/pendaftar",
+          {
+            user_id: 1,
+            acara_id: 1,
+          }
+        );
+        console.log("Pendaftaran berhasil: ", response.data);
+      } catch (error) {
+        console.error("Gagal mendaftar acara: ", error);
       }
     },
   },
