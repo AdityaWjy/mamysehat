@@ -3,7 +3,7 @@
     <div class="row my-5 gap-5">
       <div class="col-md-6">
         <img
-          src="/images/program/seminar.png"
+          :src="imgSrc + program.gambar"
           alt="image"
           class="img-fluid shadow-lg w-100 h-100"
         />
@@ -61,6 +61,7 @@ export default {
   data() {
     return {
       program: {}, // Menginisialisasi data program sebagai kosong
+      imgSrc: "http://127.0.0.1:8000/storage/", //connect to url image laravel
     };
   },
 
@@ -116,10 +117,18 @@ export default {
           "http://127.0.0.1:8000/api/pendaftar",
           {
             user_id: 1,
-            acara_id: 1,
+            acara_id: 3,
           }
         );
         console.log("Pendaftaran berhasil: ", response.data);
+
+        // Open URL in another tab
+        const paymentURL = response.data.payment_url;
+        if (paymentURL) {
+          window.open(paymentURL, "_blank");
+        } else {
+          console.log("Payment URL tidak tersedia");
+        }
       } catch (error) {
         console.error("Gagal mendaftar acara: ", error);
       }
