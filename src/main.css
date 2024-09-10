@@ -49,3 +49,10 @@
 .grayOcean {
   color: #a6a6a6;
 }
+
+.description {
+  max-width: 200px; /* Atur sesuai kebutuhan */
+  white-space: nowrap; /* Menghindari teks terpotong ke baris baru */
+  overflow: hidden; /* Menyembunyikan teks yang melampaui batas */
+  text-overflow: ellipsis; /* Menampilkan tanda '...' untuk teks yang terpotong */
+}

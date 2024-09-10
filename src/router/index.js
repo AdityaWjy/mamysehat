@@ -56,6 +56,50 @@ const routes = [
     name: 'login',
     component: () => import('../views/Login.vue')
   },
+
+  // admin router
+  {
+    path: '/admin',
+    name: 'admin',
+    component: () => import('../views/admin/HomeAdmin.vue')
+  },
+
+  {
+    path: '/admin/acara',
+    name: 'acara',
+    component: () => import('../views/admin/AcaraAdmin.vue')
+  },
+
+  {
+    path: '/admin/pendaftar',
+    name: 'pendaftar',
+    component: () => import('../views/admin/PendaftarAdmin.vue')
+  },
+
+  
+  {
+    path: '/admin/materi',
+    name: 'materi',
+    component: () => import('../views/admin/MateriAdmin.vue')
+  },
+
+  {
+    path: '/admin/pemateri',
+    name: 'pemateri',
+    component: () => import('../views/admin/PemateriAdmin.vue')
+  },
+
+  {
+    path: '/admin/fasilitas',
+    name: 'fasilitas',
+    component: () => import('../views/admin/FasilitasAdmin.vue')
+  },
+
+  {
+    path: '/admin/user',
+    name: 'user',
+    component: () => import('../views/admin/UserAdmin.vue')
+  },
 ]
 
 const router = new VueRouter({
