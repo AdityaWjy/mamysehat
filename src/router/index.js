@@ -59,38 +59,44 @@ const routes = [
 
   // admin router
   {
-    path: '/admin',
+    // admin
+    path: '',
     name: 'admin',
     component: () => import('../views/admin/HomeAdmin.vue')
   },
 
   {
-    path: '/admin/acara',
+    // /admin/acara
+    path: '',
     name: 'acara',
     component: () => import('../views/admin/AcaraAdmin.vue')
   },
 
   {
-    path: '/admin/pendaftar',
+    // /admin/pendaftar
+    path: '',
     name: 'pendaftar',
     component: () => import('../views/admin/PendaftarAdmin.vue')
   },
 
   
   {
-    path: '/admin/materi',
+    // /admin/materi
+    path: '',
     name: 'materi',
     component: () => import('../views/admin/MateriAdmin.vue')
   },
 
   {
-    path: '/admin/pemateri',
+    // /admin/pemateri
+    path: '',
     name: 'pemateri',
     component: () => import('../views/admin/PemateriAdmin.vue')
   },
 
   {
-    path: '/admin/fasilitas',
+    // /admin/fasilitas
+    path: '',
     name: 'fasilitas',
     component: () => import('../views/admin/FasilitasAdmin.vue')
   },

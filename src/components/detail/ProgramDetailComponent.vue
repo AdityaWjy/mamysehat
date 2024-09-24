@@ -8,32 +8,34 @@
           class="img-fluid shadow-lg w-100 h-100"
         />
       </div>
-      <div class="col-md-5 mt-">
+      <div class="col-md-5">
         <h4 class="fw-semibold">{{ program.nama_acara }}</h4>
         <p class="text-description">{{ program.deskripsi }}</p>
 
         <div class="personal-information">
           <h4>Personal Information</h4>
           <p class="text-description">
-            Acara {{ program.nama_acara }} dimulai pada tanggal
-            <span class="fw-semibold">{{
-              formatCustomDate(program.tgl_mulai)
-            }}</span>
+            Acara {{ program.nama_acara }} dengan materi
+            <span>{{ materiList }}</span>
+            dimulai pada tanggal
+            <span class="fw-semibold">
+              {{ formatCustomDate(program.tgl_mulai) }}
+            </span>
             bertempat pada
             <span class="fw-semibold">{{ program.lokasi }}</span> dengan harga
-            <span class="fw-semibold">{{ hargaSekarang | currency }}</span> dan
-            acara akan diakhiri pada tanggal
-            <span class="fw-semibold">{{
-              formatCustomDate(program.tgl_akhir)
-            }}</span>
+            <span class="fw-semibold">{{ formatCurrency(hargaSekarang) }}</span>
+            dan acara akan diakhiri pada tanggal
+            <span class="fw-semibold">
+              {{ formatCustomDate(program.tgl_akhir) }}
+            </span>
 
             <br />
 
-            <span class="fw-semibold"
-              >Contact Person:
-              <a :href="program.wa_link" target="_blank" class="text-dark"
-                >PT. Mamy Sehat Indonesia</a
-              >
+            <span class="fw-semibold">
+              Contact Person:
+              <a :href="program.wa_link" target="_blank" class="text-dark">
+                Hashfi
+              </a>
             </span>
           </p>
         </div>
@@ -54,14 +56,12 @@
 
 <script>
 import axios from "axios";
-import moment from "moment";
-import { routePendaftar } from "../../services/api";
-
 export default {
   data() {
     return {
       program: {}, // Menginisialisasi data program sebagai kosong
-      imgSrc: "http://127.0.0.1:8000/storage/", //connect to url image laravel
+      imgSrc: "http://127.0.0.1:8000/storage/", // URL gambar dari Laravel
+      materi: [],
     };
   },
 
@@ -74,12 +74,15 @@ export default {
       const today = new Date();
       const tglEarly = new Date(this.program.tgl_early);
 
-      // check apakah hari ini masih di periode harga early
-      if (today <= tglEarly) {
-        return this.program.harga_early;
-      } else {
-        return this.program.harga_reguler;
-      }
+      // Check apakah hari ini masih di periode harga early
+      return today <= tglEarly
+        ? this.program.harga_early
+        : this.program.harga_reguler;
+    },
+
+    materiList() {
+      // Gabungkan materi dengan koma
+      return this.materi.map((item) => item.materi).join(", ");
     },
   },
 
@@ -92,6 +95,13 @@ export default {
       return `${year}/${month}/${day}`;
     },
 
+    formatCurrency(value) {
+      return new Intl.NumberFormat("id-ID", {
+        style: "currency",
+        currency: "IDR",
+      }).format(value);
+    },
+
     async fetchProgram() {
       try {
         const id = this.$route.params.id;
@@ -101,6 +111,9 @@ export default {
             `http://127.0.0.1:8000/api/acaras/${id}`
           );
           this.program = response.data.data;
+
+          // Fetch materi after program is loaded
+          this.fetchMateri(this.program.id);
         } else {
           console.error("Parameter id tidak tersedia");
         }
@@ -109,15 +122,13 @@ export default {
       }
     },
 
-    // route pendaftar
-
     async routePendaftar() {
       try {
         const response = await axios.post(
           "http://127.0.0.1:8000/api/pendaftar",
           {
             user_id: 1,
-            acara_id: 3,
+            acara_id: this.program.id, // Use dynamic acara ID
           }
         );
         console.log("Pendaftaran berhasil: ", response.data);
@@ -131,6 +142,19 @@ export default {
         }
       } catch (error) {
         console.error("Gagal mendaftar acara: ", error);
+      }
+    },
+
+    async fetchMateri(acaraId) {
+      try {
+        const response = await axios.get(
+          `http://127.0.0.1:8000/api/materi/${acaraId}`
+        );
+        console.log("Materi: ", response.data);
+        this.materi = response.data;
+        // Simpan data materi if necessary
+      } catch (error) {
+        console.error(error);
       }
     },
   },
