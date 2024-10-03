@@ -88,6 +88,7 @@ export default {
 
         // Simpan token ke localStorage
         localStorage.setItem("auth_token", response.data);
+        localStorage.setItem("user_id", response.data.user.id); // Simpan user ID
 
         // Redirect ke halaman setelah login sukses
         this.$router.push("/");

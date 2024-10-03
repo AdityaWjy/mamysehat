@@ -143,10 +143,12 @@ export default {
         this.$router.push("/login");
       } else {
         try {
+          // get user id
+          const userId = localStorage.getItem("user_id");
           const response = await axios.post(
             "http://127.0.0.1:8000/api/pendaftar",
             {
-              user_id: 3, // Ganti sesuai dengan ID pengguna yang sesuai
+              user_id: userId, // Ganti sesuai dengan ID pengguna yang sesuai
               acara_id: this.program.id, // Gunakan ID acara dinamis
             },
             {
@@ -176,9 +178,11 @@ export default {
           `http://127.0.0.1:8000/api/materi/${acaraId}`
         );
         console.log("Materi: ", response.data);
-        this.materi = response.data; // Set materi to the response data
+
+        // Sesuaikan dengan struktur respons API Anda
+        this.materi = response.data.materi || []; // Pastikan ini adalah array
       } catch (error) {
-        console.error(error);
+        console.error("Gagal mengambil materi: ", error);
       }
     },
   },
