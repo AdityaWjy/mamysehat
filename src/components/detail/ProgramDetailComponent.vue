@@ -14,30 +14,49 @@
 
         <div class="personal-information">
           <h4>Personal Information</h4>
-          <p class="text-description">
-            Acara {{ program.nama_acara }} dengan materi
-            <span>{{ materiList }}</span>
-            dimulai pada tanggal
-            <span class="fw-semibold">
+
+          <ul class="list-unstyled">
+            <li><span class="fw-bold">Lokasi:</span> {{ program.lokasi }}</li>
+            <li>
+              <span class="fw-bold">Tanggal Mulai:</span>
               {{ formatCustomDate(program.tgl_mulai) }}
-            </span>
-            bertempat pada
-            <span class="fw-semibold">{{ program.lokasi }}</span> dengan harga
-            <span class="fw-semibold">{{ formatCurrency(hargaSekarang) }}</span>
-            dan acara akan diakhiri pada tanggal
-            <span class="fw-semibold">
+            </li>
+            <li>
+              <span class="fw-bold">Harga Early Bird:</span>
+              {{ formatCustomDate(program.tgl_early) }} -
               {{ formatCustomDate(program.tgl_akhir) }}
-            </span>
-
-            <br />
-
-            <span class="fw-semibold">
-              Contact Person:
-              <a :href="program.wa_link" target="_blank" class="text-dark">
-                Hashfi
+              {{ formatCurrency(program.harga_early) }}
+            </li>
+            <li>
+              <span class="fw-bold">Harga Reguler:</span>
+              {{ formatCustomDate(program.tgl_akhir) }} -
+              {{ formatCustomDate(program.tgl_ditutup) }}
+              {{ formatCurrency(program.harga_reguler) }}
+            </li>
+            <li>
+              <span class="fw-bold">Contact Person: </span>
+              <a
+                :href="program.wa_link"
+                target="_blank"
+                class="text-dark text-decoration-none fw-medium"
+              >
+                Hashfi <span class="">0851-4300-0100</span>
               </a>
-            </span>
-          </p>
+            </li>
+
+            <li>
+              <span class="fw-bold">Materi:</span>
+              <ul class="list-unstyled">
+                <li
+                  v-for="(item, index) in materi"
+                  :key="index"
+                  class="list-group-item"
+                >
+                  {{ index + 1 }}. {{ item.materi }}
+                </li>
+              </ul>
+            </li>
+          </ul>
         </div>
 
         <button
@@ -61,7 +80,7 @@ export default {
     return {
       program: {}, // Menginisialisasi data program sebagai kosong
       imgSrc: "http://127.0.0.1:8000/storage/", // URL gambar dari Laravel
-      materi: [],
+      materi: [], // Initialize as an empty array
     };
   },
 
@@ -69,30 +88,13 @@ export default {
     this.fetchProgram();
   },
 
-  computed: {
-    hargaSekarang() {
-      const today = new Date();
-      const tglEarly = new Date(this.program.tgl_early);
-
-      // Check apakah hari ini masih di periode harga early
-      return today <= tglEarly
-        ? this.program.harga_early
-        : this.program.harga_reguler;
-    },
-
-    materiList() {
-      // Gabungkan materi dengan koma
-      return this.materi.map((item) => item.materi).join(", ");
-    },
-  },
-
   methods: {
     formatCustomDate(date) {
       const dateObject = new Date(date);
-      const year = dateObject.getFullYear();
-      const month = (dateObject.getMonth() + 1).toString().padStart(2, "0");
       const day = dateObject.getDate().toString().padStart(2, "0");
-      return `${year}/${month}/${day}`;
+      const month = (dateObject.getMonth() + 1).toString().padStart(2, "0");
+      const year = dateObject.getFullYear();
+      return `${day}/${month}/${year}`; // Format changed to DD/MM/YYYY
     },
 
     formatCurrency(value) {
@@ -107,12 +109,18 @@ export default {
         const id = this.$route.params.id;
 
         if (id) {
+          const token = localStorage.getItem("auth_token"); // Ambil token dari localStorage
           const response = await axios.get(
-            `http://127.0.0.1:8000/api/acaras/${id}`
+            `http://127.0.0.1:8000/api/acaras/${id}`,
+            {
+              headers: {
+                Authorization: `Bearer ${token}`, // Tambahkan token ke header
+              },
+            }
           );
           this.program = response.data.data;
 
-          // Fetch materi after program is loaded
+          // Fetch materi setelah program dimuat
           this.fetchMateri(this.program.id);
         } else {
           console.error("Parameter id tidak tersedia");
@@ -122,26 +130,43 @@ export default {
       }
     },
 
-    async routePendaftar() {
-      try {
-        const response = await axios.post(
-          "http://127.0.0.1:8000/api/pendaftar",
-          {
-            user_id: 1,
-            acara_id: this.program.id, // Use dynamic acara ID
-          }
-        );
-        console.log("Pendaftaran berhasil: ", response.data);
+    isAuthenticated() {
+      // Cek apakah auth token ada di localStorage
+      return localStorage.getItem("auth_token") !== null;
+    },
 
-        // Open URL in another tab
-        const paymentURL = response.data.payment_url;
-        if (paymentURL) {
-          window.open(paymentURL, "_blank");
-        } else {
-          console.log("Payment URL tidak tersedia");
+    async routePendaftar() {
+      const token = localStorage.getItem("auth_token");
+
+      if (!token) {
+        alert("Anda harus login terlebih dahulu untuk mendaftar.");
+        this.$router.push("/login");
+      } else {
+        try {
+          const response = await axios.post(
+            "http://127.0.0.1:8000/api/pendaftar",
+            {
+              user_id: 3, // Ganti sesuai dengan ID pengguna yang sesuai
+              acara_id: this.program.id, // Gunakan ID acara dinamis
+            },
+            {
+              headers: {
+                Authorization: `Bearer ${token}`, // Tambahkan token ke header
+              },
+            }
+          );
+          console.log("Pendaftaran berhasil: ", response.data);
+
+          // Buka URL pembayaran di tab baru
+          const paymentURL = response.data.payment_url;
+          if (paymentURL) {
+            window.open(paymentURL, "_blank");
+          } else {
+            console.log("Payment URL tidak tersedia");
+          }
+        } catch (error) {
+          console.error("Gagal mendaftar acara: ", error);
         }
-      } catch (error) {
-        console.error("Gagal mendaftar acara: ", error);
       }
     },
 
@@ -151,8 +176,7 @@ export default {
           `http://127.0.0.1:8000/api/materi/${acaraId}`
         );
         console.log("Materi: ", response.data);
-        this.materi = response.data;
-        // Simpan data materi if necessary
+        this.materi = response.data; // Set materi to the response data
       } catch (error) {
         console.error(error);
       }

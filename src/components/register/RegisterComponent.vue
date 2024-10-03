@@ -10,37 +10,25 @@
       </div>
 
       <div class="col-md-5 d-flex align-items-center justify-items-center">
-        <!-- form login -->
-
-        <form class="mt-3 mt-xl-0 ms-xl-5">
+        <!-- form register -->
+        <form @submit.prevent="registerUser" class="mt-3 mt-xl-0 ms-xl-5">
           <h3>Register Pengguna</h3>
 
           <div class="row mb-3">
             <div class="col-md-6">
-              <label
-                for="namaLengkap"
-                class="form-label fw-semibold"
-                style="font-size: 14px"
+              <label for="name" class="form-label fw-semibold"
                 >Nama Lengkap:</label
               >
-              <input
-                type="text"
-                class="form-control border border-dark-subtle"
-                id="namaLengkap"
-                required
-              />
+              <input v-model="name" type="text" class="form-control" required />
             </div>
             <div class="col-md-6">
-              <label
-                for="institusi"
-                class="form-label fw-semibold"
-                style="font-size: 14px"
+              <label for="institusi" class="form-label fw-semibold"
                 >Institusi:</label
               >
               <input
+                v-model="institusi"
                 type="text"
-                class="form-control border border-dark-subtle"
-                id="institusi"
+                class="form-control"
                 required
               />
             </div>
@@ -48,61 +36,37 @@
 
           <div class="row mb-3">
             <div class="col-md-6">
-              <label
-                for="email"
-                class="form-label fw-semibold"
-                style="font-size: 14px"
+              <label for="email" class="form-label fw-semibold"
                 >Alamat Email:</label
               >
               <input
+                v-model="email"
                 type="email"
-                class="form-control border border-dark-subtle"
-                id="email"
+                class="form-control"
                 required
               />
             </div>
             <div class="col-md-6">
-              <label
-                for="nik"
-                class="form-label fw-semibold"
-                style="font-size: 14px"
-                >NIK:</label
-              >
-              <input
-                type="text"
-                class="form-control border border-dark-subtle"
-                id="nik"
-                required
-              />
+              <label for="nik" class="form-label fw-semibold">NIK:</label>
+              <input v-model="nik" type="text" class="form-control" required />
             </div>
           </div>
 
           <div class="row mb-3">
             <div class="col-md-6">
-              <label
-                for="whatsapp"
-                class="form-label fw-semibold border-dark-subtle"
-                style="font-size: 14px"
+              <label for="wa" class="form-label fw-semibold"
                 >No. WhatsApp:</label
               >
-              <input
-                type="text"
-                class="form-control border border-dark-subtle"
-                id="whatsapp"
-                required
-              />
+              <input v-model="wa" type="text" class="form-control" required />
             </div>
             <div class="col-md-6">
-              <label
-                for="kotaAsal"
-                class="form-label fw-semibold"
-                style="font-size: 14px"
+              <label for="kotaAsal" class="form-label fw-semibold"
                 >Kota Asal:</label
               >
               <input
+                v-model="kota_asal"
                 type="text"
-                class="form-control border border-dark-subtle"
-                id="kotaAsal"
+                class="form-control"
                 required
               />
             </div>
@@ -110,30 +74,24 @@
 
           <div class="row mb-3">
             <div class="col-md-6">
-              <label
-                for="profesi"
-                class="form-label fw-semibold border-dark-subtle"
-                style="font-size: 14px"
+              <label for="profesi" class="form-label fw-semibold"
                 >Profesi:</label
               >
               <input
+                v-model="profesi"
                 type="text"
-                class="form-control border border-dark-subtle"
-                id="profesi"
+                class="form-control"
                 required
               />
             </div>
             <div class="col-md-6">
-              <label
-                for="password"
-                class="form-label fw-semibold"
-                style="font-size: 14px"
+              <label for="password" class="form-label fw-semibold"
                 >Password:</label
               >
               <input
+                v-model="password"
                 type="password"
-                class="form-control border border-dark-subtle"
-                id="kotaAsal"
+                class="form-control"
                 required
               />
             </div>
@@ -144,7 +102,7 @@
               <button type="submit" class="btn btn-primary w-100">
                 Register
               </button>
-              <p class="text-center mt-3 mt-x-0">
+              <p class="text-center mt-3">
                 Already have an account?
                 <router-link
                   to="/login"
@@ -157,18 +115,46 @@
         </form>
       </div>
     </div>
-
-    <!-- Jika Anda ingin menampilkan detail program secara lebih lengkap, Anda bisa menambahkan konten lainnya di sini -->
   </div>
 </template>
 
 <script>
 import axios from "axios";
-import moment from "moment";
 
 export default {
   data() {
-    return {};
+    return {
+      name: "",
+      institusi: "",
+      email: "",
+      nik: "",
+      wa: "",
+      kota_asal: "",
+      profesi: "",
+      password: "",
+    };
+  },
+  methods: {
+    async registerUser() {
+      try {
+        const response = await axios.post("http://127.0.0.1:8000/api/users", {
+          name: this.name,
+          institusi: this.institusi,
+          email: this.email,
+          nik: this.nik,
+          wa: this.wa,
+          kota_asal: this.kota_asal,
+          profesi: this.profesi,
+          password: this.password,
+        });
+
+        alert("Registration successful!");
+        this.$router.push("/login"); // Redirect to login page after successful registration
+      } catch (error) {
+        console.error("Registration error:", error);
+        alert("Failed to register. Please try again.");
+      }
+    },
   },
 };
 </script>
@@ -182,9 +168,9 @@ export default {
   .program-detail {
     margin-top: 100px;
   }
+}
 
-  .text-description {
-    font-size: 13px;
-  }
+.text-description {
+  font-size: 13px;
 }
 </style>

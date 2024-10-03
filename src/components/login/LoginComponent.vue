@@ -11,40 +11,8 @@
 
       <div class="col-md-5 d-flex align-items-center justify-items-center">
         <!-- form login -->
-
-        <form class="mt-3 mt-xl-0 ms-xl-5">
+        <form @submit.prevent="loginUser" class="mt-3 mt-xl-0 ms-xl-5">
           <h3>Login Pengguna</h3>
-
-          <div class="row mb-3">
-            <div class="col-md-6">
-              <label
-                for="namaLengkap"
-                class="form-label fw-semibold border-dark-subtle"
-                style="font-size: 14px"
-                >Nama Lengkap:</label
-              >
-              <input
-                type="text"
-                class="form-control border border-dark-subtle"
-                id="namaLengkap"
-                required
-              />
-            </div>
-            <div class="col-md-6">
-              <label
-                for="institusi"
-                class="form-label fw-semibold"
-                style="font-size: 14px"
-                >Institusi:</label
-              >
-              <input
-                type="text"
-                class="form-control border border-dark-subtle"
-                id="institusi"
-                required
-              />
-            </div>
-          </div>
 
           <div class="row mb-3">
             <div class="col-md-6">
@@ -54,75 +22,16 @@
                 style="font-size: 14px"
                 >Alamat Email:</label
               >
+
               <input
-                type="email"
+                v-model="email"
+                type="text"
                 class="form-control border border-dark-subtle"
                 id="email"
                 required
               />
             </div>
-            <div class="col-md-6">
-              <label
-                for="nik"
-                class="form-label fw-semibold"
-                style="font-size: 14px"
-                >NIK:</label
-              >
-              <input
-                type="text"
-                class="form-control border border-dark-subtle"
-                id="nik"
-                required
-              />
-            </div>
-          </div>
 
-          <div class="row mb-3">
-            <div class="col-md-6">
-              <label
-                for="whatsapp"
-                class="form-label fw-semibold border-dark-subtle"
-                style="font-size: 14px"
-                >No. WhatsApp:</label
-              >
-              <input
-                type="text"
-                class="form-control border border-dark-subtle"
-                id="whatsapp"
-                required
-              />
-            </div>
-            <div class="col-md-6">
-              <label
-                for="kotaAsal"
-                class="form-label fw-semibold"
-                style="font-size: 14px"
-                >Kota Asal:</label
-              >
-              <input
-                type="text"
-                class="form-control border border-dark-subtle"
-                id="kotaAsal"
-                required
-              />
-            </div>
-          </div>
-
-          <div class="row mb-3">
-            <div class="col-md-6">
-              <label
-                for="profesi"
-                class="form-label fw-semibold border-dark-subtle"
-                style="font-size: 14px"
-                >Profesi:</label
-              >
-              <input
-                type="text"
-                class="form-control border border-dark-subtle"
-                id="profesi"
-                required
-              />
-            </div>
             <div class="col-md-6">
               <label
                 for="password"
@@ -131,9 +40,10 @@
                 >Password:</label
               >
               <input
+                v-model="password"
                 type="password"
                 class="form-control border border-dark-subtle"
-                id="kotaAsal"
+                id="password"
                 required
               />
             </div>
@@ -155,18 +65,37 @@
         </form>
       </div>
     </div>
-
-    <!-- Jika Anda ingin menampilkan detail program secara lebih lengkap, Anda bisa menambahkan konten lainnya di sini -->
   </div>
 </template>
 
 <script>
 import axios from "axios";
-import moment from "moment";
 
 export default {
   data() {
-    return {};
+    return {
+      email: "",
+      password: "",
+    };
+  },
+  methods: {
+    async loginUser() {
+      try {
+        const response = await axios.post("http://127.0.0.1:8000/api/login", {
+          email: this.email,
+          password: this.password,
+        });
+
+        // Simpan token ke localStorage
+        localStorage.setItem("auth_token", response.data);
+
+        // Redirect ke halaman setelah login sukses
+        this.$router.push("/");
+      } catch (error) {
+        console.error("Login gagal:", error);
+        alert("Email atau password salah.");
+      }
+    },
   },
 };
 </script>
