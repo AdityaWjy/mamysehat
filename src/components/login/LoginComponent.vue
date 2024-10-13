@@ -22,10 +22,9 @@
                 style="font-size: 14px"
                 >Alamat Email:</label
               >
-
               <input
                 v-model="email"
-                type="text"
+                type="email"
                 class="form-control border border-dark-subtle"
                 id="email"
                 required
@@ -87,8 +86,9 @@ export default {
         });
 
         // Simpan token ke localStorage
-        localStorage.setItem("auth_token", response.data);
-        localStorage.setItem("user_id", response.data.user.id); // Simpan user ID
+        localStorage.setItem("auth_token", response.data.token);
+        // Simpan user ID ke localStorage
+        localStorage.setItem("user_id", response.data.user_data.id);
 
         // Redirect ke halaman setelah login sukses
         this.$router.push("/");

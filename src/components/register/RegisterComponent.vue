@@ -149,10 +149,22 @@ export default {
         });
 
         alert("Registration successful!");
+        localStorage.setItem("user_id", response.data.user.id); // Simpan user ID
         this.$router.push("/login"); // Redirect to login page after successful registration
       } catch (error) {
         console.error("Registration error:", error);
-        alert("Failed to register. Please try again.");
+
+        // Cek apakah ada respons dari server
+        if (error.response) {
+          // Jika ada respons, ambil pesan kesalahannya
+          const errorMessage =
+            error.response.data.message ||
+            "Failed to register. Please try again.";
+          alert(errorMessage); // Tampilkan pesan kesalahan
+        } else {
+          // Jika tidak ada respons, tampilkan pesan kesalahan umum
+          alert("An error occurred. Please try again.");
+        }
       }
     },
   },

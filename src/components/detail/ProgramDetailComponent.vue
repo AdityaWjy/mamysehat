@@ -48,28 +48,46 @@
               <span class="fw-bold">Materi:</span>
               <ul class="list-unstyled">
                 <li
-                  v-for="(item, index) in materi"
-                  :key="index"
+                  v-for="materiAcara in program.materis"
+                  :key="materiAcara.id"
                   class="list-group-item"
                 >
-                  {{ index + 1 }}. {{ item.materi }}
+                  {{ materiAcara.materi }}
+                </li>
+              </ul>
+
+              <ul class="list-unstyled">
+                <li>
+                  <span class="fw-bold">Fasilitas:</span>
+                  <ul class="list-unstyled">
+                    <li
+                      v-for="fasilitasAcara in program.fasilitas"
+                      :key="fasilitasAcara.id"
+                      class="list-group-item"
+                    >
+                      {{ fasilitasAcara.fasilitas }}
+                    </li>
+                  </ul>
                 </li>
               </ul>
             </li>
           </ul>
         </div>
 
+        <!-- Tombol pendaftaran hanya akan ditampilkan jika user belum terdaftar dan belum membayar -->
         <button
+          v-if="!isRegistered"
           type="submit"
           @click="routePendaftar"
           class="btn btn-primary w-100 fw-semibold"
         >
           Ikut Program Acara
         </button>
+        <p v-else class="text-danger">
+          Anda sudah terdaftar dan telah membayar.
+        </p>
       </div>
     </div>
-
-    <!-- Jika Anda ingin menampilkan detail program secara lebih lengkap, Anda bisa menambahkan konten lainnya di sini -->
   </div>
 </template>
 
@@ -78,9 +96,12 @@ import axios from "axios";
 export default {
   data() {
     return {
-      program: {}, // Menginisialisasi data program sebagai kosong
-      imgSrc: "http://127.0.0.1:8000/storage/", // URL gambar dari Laravel
-      materi: [], // Initialize as an empty array
+      program: {
+        materi: [],
+        fasilitas: [],
+      },
+      imgSrc: "http://127.0.0.1:8000/storage/",
+      isRegistered: false, // Menyimpan status pendaftaran
     };
   },
 
@@ -94,7 +115,7 @@ export default {
       const day = dateObject.getDate().toString().padStart(2, "0");
       const month = (dateObject.getMonth() + 1).toString().padStart(2, "0");
       const year = dateObject.getFullYear();
-      return `${day}/${month}/${year}`; // Format changed to DD/MM/YYYY
+      return `${day}/${month}/${year}`;
     },
 
     formatCurrency(value) {
@@ -107,21 +128,34 @@ export default {
     async fetchProgram() {
       try {
         const id = this.$route.params.id;
+        const token = localStorage.getItem("auth_token");
 
         if (id) {
-          const token = localStorage.getItem("auth_token"); // Ambil token dari localStorage
           const response = await axios.get(
             `http://127.0.0.1:8000/api/acaras/${id}`,
             {
               headers: {
-                Authorization: `Bearer ${token}`, // Tambahkan token ke header
+                Authorization: `Bearer ${token}`,
               },
             }
           );
           this.program = response.data.data;
 
-          // Fetch materi setelah program dimuat
-          this.fetchMateri(this.program.id);
+          // Memeriksa status pendaftaran untuk acara ini
+          const userId = localStorage.getItem("user_id");
+
+          const registrationResponse = await axios.get(
+            `http://127.0.0.1:8000/api/pendaftar?user_id=${userId}&acara_id=${id}`,
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            }
+          );
+
+          this.isRegistered = registrationResponse.data.data.some(
+            (pendaftar) => pendaftar.status === "terbayar"
+          );
         } else {
           console.error("Parameter id tidak tersedia");
         }
@@ -131,7 +165,6 @@ export default {
     },
 
     isAuthenticated() {
-      // Cek apakah auth token ada di localStorage
       return localStorage.getItem("auth_token") !== null;
     },
 
@@ -143,64 +176,33 @@ export default {
         this.$router.push("/login");
       } else {
         try {
-          // get user id
           const userId = localStorage.getItem("user_id");
           const response = await axios.post(
             "http://127.0.0.1:8000/api/pendaftar",
             {
-              user_id: userId, // Ganti sesuai dengan ID pengguna yang sesuai
-              acara_id: this.program.id, // Gunakan ID acara dinamis
+              user_id: userId,
+              acara_id: this.program.id,
             },
             {
               headers: {
-                Authorization: `Bearer ${token}`, // Tambahkan token ke header
+                Authorization: `Bearer ${token}`,
               },
             }
           );
           console.log("Pendaftaran berhasil: ", response.data);
 
-          // Buka URL pembayaran di tab baru
           const paymentURL = response.data.payment_url;
           if (paymentURL) {
+            // if payment url tersedia maka open new tab
             window.open(paymentURL, "_blank");
           } else {
             console.log("Payment URL tidak tersedia");
           }
         } catch (error) {
-          console.error("Gagal mendaftar acara: ", error);
+          alert("Anda sudah mendaftar");
         }
-      }
-    },
-
-    async fetchMateri(acaraId) {
-      try {
-        const response = await axios.get(
-          `http://127.0.0.1:8000/api/materi/${acaraId}`
-        );
-        console.log("Materi: ", response.data);
-
-        // Sesuaikan dengan struktur respons API Anda
-        this.materi = response.data.materi || []; // Pastikan ini adalah array
-      } catch (error) {
-        console.error("Gagal mengambil materi: ", error);
       }
     },
   },
 };
 </script>
-
-<style scoped>
-.text-description {
-  font-size: 15px;
-}
-
-@media (max-width: 500px) {
-  .program-detail {
-    margin-top: 100px;
-  }
-
-  .text-description {
-    font-size: 13px;
-  }
-}
-</style>

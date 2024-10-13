@@ -55,6 +55,21 @@
                     >Contact Us</router-link
                   >
                 </li>
+
+                <!-- Tampilkan Login atau Logout berdasarkan status otentikasi -->
+                <li class="nav-item" v-if="!isAuthenticated">
+                  <router-link
+                    to="/login"
+                    class="nav-link fw-medium"
+                    aria-current="page"
+                    >Login</router-link
+                  >
+                </li>
+                <li class="nav-item" v-if="isAuthenticated">
+                  <a @click.prevent="logout" class="nav-link fw-medium pointer"
+                    >Logout</a
+                  >
+                </li>
               </ul>
             </div>
           </div>
@@ -72,6 +87,29 @@ export default {
     return {
       logoSrc: logo,
     };
+  },
+  computed: {
+    isAuthenticated() {
+      return localStorage.getItem("auth_token") !== null; // Periksa keberadaan token
+    },
+  },
+  methods: {
+    logout() {
+      console.log("Logout button clicked");
+      localStorage.removeItem("auth_token");
+      localStorage.removeItem("user_id");
+
+      alert("Anda telah berhasil logout."); // Konfirmasi logout
+      // Reload halaman untuk memastikan status di-reset
+      location.reload();
+
+      // Memaksa Vue untuk merender ulang navbar
+      this.$forceUpdate();
+
+      if (this.$route.path !== "/") {
+        this.$router.push("/");
+      }
+    },
   },
 };
 </script>
@@ -104,5 +142,9 @@ export default {
   .fixed-top {
     position: initial !important; /* Reset fixed position for desktop */
   }
+}
+
+.pointer {
+  cursor: pointer;
 }
 </style>
