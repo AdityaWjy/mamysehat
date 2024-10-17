@@ -16,25 +16,33 @@
           <h4>Personal Information</h4>
 
           <ul class="list-unstyled">
-            <li><span class="fw-bold">Lokasi:</span> {{ program.lokasi }}</li>
+            <li><span class="fw-bold">Lokasi:</span></li>
+            <li class="mb-2">
+              {{ program.lokasi }}
+            </li>
             <li>
-              <span class="fw-bold">Tanggal Mulai:</span>
+              <span class="fw-bold">Tanggal Mulai Acara:</span>
+            </li>
+            <li class="mb-2">
               {{ formatCustomDate(program.tgl_mulai) }}
             </li>
             <li>
-              <span class="fw-bold">Harga Early Bird:</span>
-              {{ formatCustomDate(program.tgl_early) }} -
-              {{ formatCustomDate(program.tgl_akhir) }}
-              {{ formatCurrency(program.harga_early) }}
+              <span class="fw-bold">Harga Early Bird Sampai:</span>
+            </li>
+            <li class="mb-2">
+              {{ formatCustomDate(program.tgl_early) }}
+              ( {{ formatCurrency(program.harga_early) }} )
             </li>
             <li>
               <span class="fw-bold">Harga Reguler:</span>
-              {{ formatCustomDate(program.tgl_akhir) }} -
-              {{ formatCustomDate(program.tgl_ditutup) }}
+            </li>
+            <li class="mb-2">
               {{ formatCurrency(program.harga_reguler) }}
             </li>
             <li>
               <span class="fw-bold">Contact Person: </span>
+            </li>
+            <li class="mb-2">
               <a
                 :href="program.wa_link"
                 target="_blank"
@@ -43,16 +51,15 @@
                 Hashfi <span class="">0851-4300-0100</span>
               </a>
             </li>
-
             <li>
               <span class="fw-bold">Materi:</span>
               <ul class="list-unstyled">
                 <li
-                  v-for="materiAcara in program.materis"
+                  v-for="(materiAcara, index) in program.materis"
                   :key="materiAcara.id"
-                  class="list-group-item"
+                  class="list-group-item mb-2"
                 >
-                  {{ materiAcara.materi }}
+                  {{ index + 1 }}. {{ materiAcara.materi }}
                 </li>
               </ul>
 
@@ -61,11 +68,11 @@
                   <span class="fw-bold">Fasilitas:</span>
                   <ul class="list-unstyled">
                     <li
-                      v-for="fasilitasAcara in program.fasilitas"
+                      v-for="(fasilitasAcara, index) in program.fasilitas"
                       :key="fasilitasAcara.id"
                       class="list-group-item"
                     >
-                      {{ fasilitasAcara.fasilitas }}
+                      {{ index + 1 }} {{ fasilitasAcara.fasilitas }}
                     </li>
                   </ul>
                 </li>
@@ -143,19 +150,6 @@ export default {
 
           // Memeriksa status pendaftaran untuk acara ini
           const userId = localStorage.getItem("user_id");
-
-          const registrationResponse = await axios.get(
-            `http://127.0.0.1:8000/api/pendaftar?user_id=${userId}&acara_id=${id}`,
-            {
-              headers: {
-                Authorization: `Bearer ${token}`,
-              },
-            }
-          );
-
-          this.isRegistered = registrationResponse.data.data.some(
-            (pendaftar) => pendaftar.status === "terbayar"
-          );
         } else {
           console.error("Parameter id tidak tersedia");
         }
@@ -177,6 +171,7 @@ export default {
       } else {
         try {
           const userId = localStorage.getItem("user_id");
+          console.log(userId);
           const response = await axios.post(
             "http://127.0.0.1:8000/api/pendaftar",
             {
@@ -193,13 +188,21 @@ export default {
 
           const paymentURL = response.data.payment_url;
           if (paymentURL) {
-            // if payment url tersedia maka open new tab
+            // Jika payment URL tersedia, buka tab baru
             window.open(paymentURL, "_blank");
           } else {
             console.log("Payment URL tidak tersedia");
           }
         } catch (error) {
-          alert("Anda sudah mendaftar");
+          if (error.response && error.response.status === 409) {
+            alert("Kamu sudah mendaftar untuk acara ini.");
+          } else {
+            console.log(
+              "Error pendaftaran: ",
+              error.response ? error.response.data : error
+            );
+            alert("Gagal mendaftar acara");
+          }
         }
       }
     },
