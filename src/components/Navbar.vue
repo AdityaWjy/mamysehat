@@ -65,10 +65,26 @@
                     >Login</router-link
                   >
                 </li>
-                <li class="nav-item" v-if="isAuthenticated">
-                  <a @click.prevent="logout" class="nav-link fw-medium pointer"
-                    >Logout</a
-                  >
+
+                <li class="nav-item dropdown" v-if="isAuthenticated">
+                  <div class="dropdown">
+                    <button
+                      class="btn border-0 btn-primary dropdown-toggle"
+                      type="button"
+                      id="userDropdown"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
+                    >
+                      {{ username }}
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="userDropdown">
+                      <li>
+                        <button @click="logout" class="dropdown-item py-0">
+                          Logout
+                        </button>
+                      </li>
+                    </ul>
+                  </div>
                 </li>
               </ul>
             </div>
@@ -86,6 +102,8 @@ export default {
   data() {
     return {
       logoSrc: logo,
+      username: localStorage.getItem("name") || "",
+      dropdownVisible: false,
     };
   },
   computed: {
@@ -94,10 +112,17 @@ export default {
     },
   },
   methods: {
+    // toggle dropdown
+    toggleDropdown() {
+      this.dropdownVisible = !this.dropdownVisible;
+    },
+
+    // logout function
     logout() {
       console.log("Logout button clicked");
       localStorage.removeItem("auth_token");
       localStorage.removeItem("user_id");
+      localStorage.removeItem("name");
 
       alert("Anda telah berhasil logout."); // Konfirmasi logout
       // Reload halaman untuk memastikan status di-reset

@@ -17,8 +17,8 @@
 
         <!-- Contact Information -->
         <div class="col-md-5 contact-page order-2 order-md-1">
-          <h3 class="text-center">Contact Us</h3>
-          <p class="text-center">
+          <h3 class="text-center text-xl-start">Hubungi Kami</h3>
+          <p class="text-center text-xl-start">
             In its service to provide the best for you. Contact us if you have
             any questions or complaints to submit.
           </p>
@@ -33,7 +33,7 @@
                 class="me-2 mb-2 mb-md-0"
               />
               <a
-                href="https://www.instagram.com/gafinlab.id?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+                href="https://www.instagram.com/mamysehatacademy.id/"
                 class="text-decoration-none text-dark"
                 target="_blank"
                 >mamysehatacademy.id</a

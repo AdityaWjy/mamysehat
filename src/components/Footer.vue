@@ -96,7 +96,7 @@
               </a>
 
               <a
-                href="https://www.instagram.com/gafinlab.id?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+                href="https://www.instagram.com/mamysehatacademy.id/"
                 target="_blank"
                 class="block text-decoration-none text-white d-xl-flex align-items-center justify-align-center gap-2"
               >
