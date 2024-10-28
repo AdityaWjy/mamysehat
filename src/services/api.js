@@ -10,4 +10,5 @@ export const postAcara = "http://127.0.0.1:8000/api/acaras";
 export const updateAcara = "http://127.0.0.1:8000/api/acaras/";
 
 // api
-export const mamyApi = "https://mamyacademy.nadiyahmyrilla.com/api/";
+export const mamyApi = "http://127.0.0.1:8000/api/";
+export const mamyApiImg = "http://127.0.0.1:8000/storage/";

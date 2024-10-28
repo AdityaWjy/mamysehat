@@ -39,7 +39,7 @@ export default {
   methods: {
     async fetchPrograms() {
       try {
-        const response = await axios.get("http://127.0.0.1:8000/api/acaras");
+        const response = await axios.get(`${mamyApi}acaras`);
         this.programs = response.data;
       } catch (error) {
         console.error(error);

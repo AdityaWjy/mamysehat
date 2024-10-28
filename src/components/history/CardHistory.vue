@@ -37,10 +37,11 @@
 </template>
 
 <script>
+import { mamyApiImg } from "../../services/api";
 export default {
   data() {
     return {
-      imgSrc: "http://127.0.0.1:8000/storage/",
+      imgSrc: `${mamyApiImg}`,
     };
   },
 

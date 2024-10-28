@@ -25,7 +25,7 @@
 <script>
 import axios from "axios";
 import CardHistory from "./CardHistory.vue";
-
+import { mamyApi } from "../../services/api";
 export default {
   data() {
     return {
@@ -48,7 +48,7 @@ export default {
 
       try {
         const response = await axios.post(
-          "http://127.0.0.1:8000/api/history",
+          `${mamyApi}history`,
           {
             user_id: userId, // Include user_id in the body
           },

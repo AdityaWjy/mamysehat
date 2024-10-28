@@ -69,6 +69,7 @@
 
 <script>
 import axios from "axios";
+import { mamyApi } from "../../services/api";
 
 export default {
   data() {
@@ -80,7 +81,7 @@ export default {
   methods: {
     async loginUser() {
       try {
-        const response = await axios.post("http://127.0.0.1:8000/api/login", {
+        const response = await axios.post(`${mamyApi}login`, {
           email: this.email,
           password: this.password,
         });

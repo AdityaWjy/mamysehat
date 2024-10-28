@@ -107,6 +107,8 @@
 </template>
 
 <script>
+import { mamyApi } from "../../services/api";
+import { mamyApiImg } from "../../services/api";
 import axios from "axios";
 export default {
   data() {
@@ -115,7 +117,7 @@ export default {
         materi: [],
         fasilitas: [],
       },
-      imgSrc: "http://127.0.0.1:8000/storage/",
+      imgSrc: `${mamyApiImg}`,
       isRegistered: false, // Menyimpan status pendaftaran
     };
   },
@@ -146,14 +148,11 @@ export default {
         const token = localStorage.getItem("auth_token");
 
         if (id) {
-          const response = await axios.get(
-            `http://127.0.0.1:8000/api/acaras/${id}`,
-            {
-              headers: {
-                Authorization: `Bearer ${token}`,
-              },
-            }
-          );
+          const response = await axios.get(`${mamyApi}acaras/${id}`, {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          });
           this.program = response.data.data;
 
           // Memeriksa status pendaftaran untuk acara ini
@@ -181,7 +180,7 @@ export default {
           const userId = localStorage.getItem("user_id");
           console.log(userId);
           const response = await axios.post(
-            "http://127.0.0.1:8000/api/pendaftar",
+            `${mamyApi}pendaftar`,
             {
               user_id: userId,
               acara_id: this.program.id,

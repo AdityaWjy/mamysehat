@@ -181,7 +181,7 @@ export default {
       const profesi = this.isDokterSpesialis ? "spesialis" : this.profesi;
 
       try {
-        const response = await axios.post("http://127.0.0.1:8000/api/users", {
+        const response = await axios.post(`${mamyApi}/users`, {
           name: this.name,
           institusi: this.institusi,
           email: this.email,
