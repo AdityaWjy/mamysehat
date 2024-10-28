@@ -28,11 +28,13 @@
 </template>
 
 <script>
+import { mamyApiImg } from "../../services/api";
+
 export default {
   name: "CardProgram",
   data() {
     return {
-      imgSrc: "http://127.0.0.1:8000/storage/",
+      imgSrc: `${mamyApiImg}`,
       isSpesialist: localStorage.getItem("profesi") === "spesialis",
     };
   },
