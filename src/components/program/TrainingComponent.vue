@@ -26,7 +26,7 @@
 
 <script>
 import axios from "axios";
-import { getPrograms } from "@/services/api.js";
+import { mamyApi } from "../../services/api";
 import CardProgram from "./CardProgram.vue";
 
 export default {
@@ -39,7 +39,7 @@ export default {
   methods: {
     async fetchPrograms() {
       try {
-        const response = await axios.get(getPrograms);
+        const response = await axios.get("http://127.0.0.1:8000/api/acaras");
         this.programs = response.data;
       } catch (error) {
         console.error(error);

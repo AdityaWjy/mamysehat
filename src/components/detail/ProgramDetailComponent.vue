@@ -39,6 +39,14 @@
             <li class="mb-2">
               {{ formatCurrency(program.harga_reguler) }}
             </li>
+
+            <li>
+              <span class="fw-bold">Harga Spesialis:</span>
+            </li>
+            <li class="mb-2">
+              {{ formatCurrency(program.harga_spesialis) }}
+            </li>
+
             <li>
               <span class="fw-bold">Contact Person: </span>
             </li>
@@ -193,6 +201,9 @@ export default {
           } else {
             console.log("Payment URL tidak tersedia");
           }
+
+          // Redirect ke halaman /history setelah pendaftaran berhasil
+          this.$router.push("/history");
         } catch (error) {
           if (error.response && error.response.status === 409) {
             alert("Kamu sudah mendaftar untuk acara ini.");

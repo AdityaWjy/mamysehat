@@ -17,7 +17,7 @@
 
         <!-- Contact Information -->
         <div class="col-md-5 contact-page order-2 order-md-1">
-          <h3 class="text-center text-xl-start">Hubungi Kami</h3>
+          <h3 class="text-center text-xl-start blueOcean">Hubungi Kami</h3>
           <p class="text-center text-xl-start">
             In its service to provide the best for you. Contact us if you have
             any questions or complaints to submit.

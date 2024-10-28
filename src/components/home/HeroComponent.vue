@@ -22,9 +22,7 @@
                 convallis ex.
               </p>
 
-              <router-link
-                to="/register"
-                class="btn-custom text-decoration-none"
+              <router-link to="/program" class="btn-custom text-decoration-none"
                 >Get Our Service</router-link
               >
             </div>

@@ -79,6 +79,12 @@
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="userDropdown">
                       <li>
+                        <button @click="goHistory" class="dropdown-item py-0">
+                          History
+                        </button>
+                      </li>
+
+                      <li>
                         <button @click="logout" class="dropdown-item py-0">
                           Logout
                         </button>
@@ -115,6 +121,14 @@ export default {
     // toggle dropdown
     toggleDropdown() {
       this.dropdownVisible = !this.dropdownVisible;
+    },
+
+    // route go history
+    goHistory() {
+      // Check if the current route is not '/history' before pushing
+      if (this.$route.path !== "/history") {
+        this.$router.push("/history");
+      }
     },
 
     // logout function

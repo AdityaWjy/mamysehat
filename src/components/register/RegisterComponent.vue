@@ -61,7 +61,7 @@
             </div>
             <div class="col-md-6">
               <label for="kotaAsal" class="form-label fw-semibold"
-                >Kota Asal:</label
+                >Domisili:</label
               >
               <input
                 v-model="kota_asal"
@@ -82,14 +82,46 @@
                 type="text"
                 class="form-control"
                 required
+                :disabled="isDokterSpesialis"
+                :placeholder="
+                  isDokterSpesialis ? 'Dokter Spesialis' : 'Profesi anda'
+                "
               />
+
+              <div class="form-check mt-3">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  value=""
+                  id="flexCheckDefault"
+                  v-model="isDokterSpesialis"
+                />
+                <label class="form-check-label" for="flexCheckDefault">
+                  Dokter Spesialis
+                </label>
+              </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 mt-2 mt-xl-0">
               <label for="password" class="form-label fw-semibold"
                 >Password:</label
               >
               <input
                 v-model="password"
+                type="password"
+                class="form-control"
+                required
+              />
+            </div>
+          </div>
+
+          <!-- confirm password -->
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <label for="confirmPassword" class="form-label fw-semibold"
+                >Confirm Password:</label
+              >
+              <input
+                v-model="confirmPassword"
                 type="password"
                 class="form-control"
                 required
@@ -132,10 +164,22 @@ export default {
       kota_asal: "",
       profesi: "",
       password: "",
+      confirmPassword: "",
+
+      isDokterSpesialis: false,
     };
   },
   methods: {
     async registerUser() {
+      // Cek apakah password dan konfirmasi password sama
+      if (this.password !== this.confirmPassword) {
+        alert("Password dan konfirmasi password tidak cocok.");
+        return;
+      }
+
+      // Atur profesi jika dokter spesialis dicentang
+      const profesi = this.isDokterSpesialis ? "spesialis" : this.profesi;
+
       try {
         const response = await axios.post("http://127.0.0.1:8000/api/users", {
           name: this.name,
@@ -144,7 +188,7 @@ export default {
           nik: this.nik,
           wa: this.wa,
           kota_asal: this.kota_asal,
-          profesi: this.profesi,
+          profesi: profesi,
           password: this.password,
         });
 
@@ -156,13 +200,11 @@ export default {
 
         // Cek apakah ada respons dari server
         if (error.response) {
-          // Jika ada respons, ambil pesan kesalahannya
           const errorMessage =
             error.response.data.message ||
             "Failed to register. Please try again.";
-          alert(errorMessage); // Tampilkan pesan kesalahan
+          alert(errorMessage);
         } else {
-          // Jika tidak ada respons, tampilkan pesan kesalahan umum
           alert("An error occurred. Please try again.");
         }
       }

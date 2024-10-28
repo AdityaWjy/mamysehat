@@ -1,117 +1,113 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import HomeView from '../views/HomeView.vue'
-import ProgramDetail from '../views/ProgramDetail.vue'
+import Vue from "vue";
+import VueRouter from "vue-router";
+import HomeView from "../views/HomeView.vue";
+import ProgramDetail from "../views/ProgramDetail.vue";
 
-
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
 const routes = [
   {
-    path: '/',
-    name: 'home',
-    component: HomeView
+    path: "/",
+    name: "home",
+    component: HomeView,
   },
   {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
+    path: "/about",
+    name: "about",
+    component: () => import("../views/AboutView.vue"),
   },
-
   {
-    path: '/program',
-    name: 'program',
-    component: () => import('../views/ProgramView.vue')
+    path: "/program",
+    name: "program",
+    component: () => import("../views/ProgramView.vue"),
   },
-
   {
-    path: '/program/:id',
-    name: 'program-detail',
+    path: "/program/:id",
+    name: "program-detail",
     component: ProgramDetail,
   },
-
   {
-    path: '/contact',
-    name: 'contact',
-    component: () => import('../views/ContactView.vue')
+    path: "/contact",
+    name: "contact",
+    component: () => import("../views/ContactView.vue"),
   },
-
   {
-    path: '/404',
-    name: '404',
-    component: () => import('../views/404Page.vue')
+    path: "/404",
+    name: "404",
+    component: () => import("../views/404Page.vue"),
   },
-
   {
-    path: '/register',
-    name: 'register',
-    component: () => import('../views/Register.vue')
+    path: "/register",
+    name: "register",
+    component: () => import("../views/Register.vue"),
   },
-
   {
-    path: '/login',
-    name: 'login',
-    component: () => import('../views/Login.vue')
+    path: "/login",
+    name: "login",
+    component: () => import("../views/Login.vue"),
   },
-
-  // admin router
   {
-    // admin
-    path: '',
-    name: 'admin',
-    component: () => import('../views/admin/HomeAdmin.vue')
+    path: "/history",
+    name: "history",
+    component: () => import("../views/historyView.vue"),
+    meta: { requiresAuth: true },
   },
-
+  // Admin routes
   {
-    // /admin/acara
-    path: '',
-    name: 'acara',
-    component: () => import('../views/admin/AcaraAdmin.vue')
+    path: "/admin",
+    name: "admin",
+    component: () => import("../views/admin/HomeAdmin.vue"),
   },
-
   {
-    // /admin/pendaftar
-    path: '',
-    name: 'pendaftar',
-    component: () => import('../views/admin/PendaftarAdmin.vue')
+    path: "/admin/acara",
+    name: "acara",
+    component: () => import("../views/admin/AcaraAdmin.vue"),
   },
-
-  
   {
-    // /admin/materi
-    path: '',
-    name: 'materi',
-    component: () => import('../views/admin/MateriAdmin.vue')
+    path: "/admin/pendaftar",
+    name: "pendaftar",
+    component: () => import("../views/admin/PendaftarAdmin.vue"),
   },
-
   {
-    // /admin/pemateri
-    path: '',
-    name: 'pemateri',
-    component: () => import('../views/admin/PemateriAdmin.vue')
+    path: "/admin/materi",
+    name: "materi",
+    component: () => import("../views/admin/MateriAdmin.vue"),
   },
-
   {
-    // /admin/fasilitas
-    path: '',
-    name: 'fasilitas',
-    component: () => import('../views/admin/FasilitasAdmin.vue')
+    path: "/admin/pemateri",
+    name: "pemateri",
+    component: () => import("../views/admin/PemateriAdmin.vue"),
   },
-
   {
-    path: '/admin/user',
-    name: 'user',
-    component: () => import('../views/admin/UserAdmin.vue')
+    path: "/admin/fasilitas",
+    name: "fasilitas",
+    component: () => import("../views/admin/FasilitasAdmin.vue"),
   },
-]
+  {
+    path: "/admin/user",
+    name: "user",
+    component: () => import("../views/admin/UserAdmin.vue"),
+  },
+];
 
 const router = new VueRouter({
-  mode: 'history',
+  mode: "history",
   base: process.env.BASE_URL,
-  routes
-})
+  routes,
+});
 
-export default router
+router.beforeEach((to, from, next) => {
+  const isAuthenticated = !!localStorage.getItem("user_id");
+
+  if (
+    to.matched.some((record) => record.meta.requiresAuth) &&
+    !isAuthenticated
+  ) {
+    alert("Anda harus login terlebih dahulu.");
+    next("/login"); // Redirect to login if not authenticated
+  } else {
+    next(); // Allow navigation if authenticated or route doesn’t require authentication
+  }
+});
+
+export default router;

@@ -11,6 +11,9 @@
         <p class="grayOcean mb-">Mulai: {{ program.tgl_mulai }}</p>
         <p class="grayOcean mb-">Tanggal early: {{ program.tgl_early }}</p>
         <p class="grayOcean mb-">Harga: {{ hargaSekarang | currency }}</p>
+        <p class="grayOcean mb-">
+          Harga Spesialis: {{ program.harga_spesialis | currency }}
+        </p>
 
         <router-link
           :to="'/program/' + program.id"
@@ -30,12 +33,17 @@ export default {
   data() {
     return {
       imgSrc: "http://127.0.0.1:8000/storage/",
+      isSpesialist: localStorage.getItem("profesi") === "spesialis",
     };
   },
   computed: {
     hargaSekarang() {
       const today = new Date();
       const tglEarly = new Date(this.program.tgl_early);
+
+      if (this.isSpesialist) {
+        return this.program.harga_spesialis;
+      }
 
       // check apakah hari ini masih di periode early
       if (today <= tglEarly) {
