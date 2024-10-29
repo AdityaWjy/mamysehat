@@ -1,7 +1,7 @@
 <template>
   <div class="program-component mb-5">
     <div
-      class="d-flex align-items-center justify-items-center flex-column text-center"
+      class="d-flex align-items-center justify-items-center flex-column text-center mb-4"
     >
       <h1 class="blueOcean font-semibold">Program</h1>
       <p class="capitalize text-center fw-normal text-content">
@@ -16,52 +16,51 @@
     <!-- program -->
 
     <div
-      class="d-flex flex-column flex-xl-row mt-2 mt-xl-4 align-items-center justify-content-center gap-1 gap-xl-5"
+      class="d-flex flex-column flex-xl-row justify-content-center align-items-center gap-3"
     >
-      <div class="background-box mb-2 mb-xl-0">
-        <div class="d-flex rounded" style="background-color: #1e293b">
-          <div class="img">
-            <img src="/images/training.png" class="rounded" alt="Training" />
-          </div>
-          <div class="py-2 px-2 p-xl-3">
-            <h2 class="text-white font-semibold">Webinar</h2>
-            <p class="text-white-50 content-program">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            </p>
-            <button class="btn-custom-mobile" @click="navigateToProgram">
-              Read More
-            </button>
-          </div>
-        </div>
-      </div>
-      <div class="background-box">
-        <div class="d-flex rounded" style="background-color: #1e293b">
-          <div class="img">
-            <img src="/images/training.png" alt="Training" />
-          </div>
-          <div class="py-2 px-2 p-xl-3">
-            <h2 class="text-white font-semibold">Training</h2>
-            <p class="text-white-50 content-program">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            </p>
-            <button class="btn-custom-mobile" @click="navigateToProgram">
-              Read More
-            </button>
-          </div>
-        </div>
+      <div class="mx-3" v-for="program in programs" :key="program.id">
+        <CardHero :program="program" />
       </div>
     </div>
   </div>
 </template>
 <script>
+import axios from "axios";
+import { mamyApi } from "../../services/api";
+import CardHero from "./cardHero.vue";
+
 export default {
+  data() {
+    return {
+      programs: [],
+    };
+  },
+
   methods: {
     navigateToProgram() {
       this.$router.push({ name: "program" });
     },
+
+    async fetchPrograms() {
+      try {
+        const response = await axios.get(`${mamyApi}acaras`);
+        this.programs = response.data;
+      } catch (error) {
+        console.error("Error fetch programs: ", error);
+      }
+    },
+  },
+
+  mounted() {
+    this.fetchPrograms();
+  },
+
+  components: {
+    CardHero,
   },
 };
 </script>
+
 <style scoped>
 .text-content {
   width: 800px;
@@ -75,6 +74,25 @@ img {
 
 .background-box {
   width: 460px;
+}
+
+.title {
+  font-size: 14px;
+}
+
+.deskripsi {
+  font-size: 12px;
+}
+
+.btn-custom-desktop {
+  width: 100%;
+
+  padding-top: 6px;
+  padding-bottom: 6px;
+
+  font-size: 10px;
+  margin-top: 5px;
+  text-align: center;
 }
 
 @media (max-width: 500px) {
@@ -97,12 +115,8 @@ img {
     margin-bottom: 10px;
   }
 
-  .background-box {
-    width: 310px;
-  }
-
   img {
-    width: 120px;
+    width: 500px;
     height: 120px;
   }
 
