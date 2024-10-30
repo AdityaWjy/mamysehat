@@ -80,7 +80,7 @@
                       :key="fasilitasAcara.id"
                       class="list-group-item"
                     >
-                      {{ index + 1 }} {{ fasilitasAcara.fasilitas }}
+                      {{ index + 1 }}. {{ fasilitasAcara.fasilitas }}
                     </li>
                   </ul>
                 </li>
@@ -206,6 +206,9 @@ export default {
         } catch (error) {
           if (error.response && error.response.status === 409) {
             alert("Kamu sudah mendaftar untuk acara ini.");
+          }
+          if (error.response && error.response.status === 403) {
+            alert("Acara tidak aktif atau sudah ditutup");
           } else {
             console.log(
               "Error pendaftaran: ",

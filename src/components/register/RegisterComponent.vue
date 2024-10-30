@@ -151,6 +151,7 @@
 </template>
 
 <script>
+import { mamyApi } from "../../services/api";
 import axios from "axios";
 
 export default {
@@ -181,7 +182,7 @@ export default {
       const profesi = this.isDokterSpesialis ? "spesialis" : this.profesi;
 
       try {
-        const response = await axios.post(`${mamyApi}/users`, {
+        const response = await axios.post(`${mamyApi}users`, {
           name: this.name,
           institusi: this.institusi,
           email: this.email,
