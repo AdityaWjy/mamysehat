@@ -175,6 +175,25 @@ export default {
       // Cek apakah password dan konfirmasi password sama
       if (this.password !== this.confirmPassword) {
         alert("Password dan konfirmasi password tidak cocok.");
+
+        new Notify({
+          status: "error",
+          title: "Password dan konfirmasi password tidak cocok",
+
+          effect: "fade",
+          speed: 300,
+          customClass: null,
+          customIcon: null,
+          showIcon: true,
+          showCloseButton: true,
+          autoclose: true,
+          autotimeout: 3000,
+          gap: 20,
+          distance: 20,
+          type: "outline",
+          position: "right top",
+        });
+
         return;
       }
 
@@ -193,7 +212,23 @@ export default {
           password: this.password,
         });
 
-        alert("Registration successful!");
+        new Notify({
+          status: "success",
+          title: "Registrasi berhasil.",
+
+          effect: "fade",
+          speed: 300,
+          customClass: null,
+          customIcon: null,
+          showIcon: true,
+          showCloseButton: true,
+          autoclose: true,
+          autotimeout: 3000,
+          gap: 20,
+          distance: 20,
+          type: "outline",
+          position: "right top",
+        });
         localStorage.setItem("user_id", response.data.user.id); // Simpan user ID
         this.$router.push("/login"); // Redirect to login page after successful registration
       } catch (error) {
@@ -204,9 +239,41 @@ export default {
           const errorMessage =
             error.response.data.message ||
             "Failed to register. Please try again.";
-          alert(errorMessage);
+          new Notify({
+            status: "error",
+            title: "Gagal registrasi silahkan coba lagi",
+
+            effect: "fade",
+            speed: 300,
+            customClass: null,
+            customIcon: null,
+            showIcon: true,
+            showCloseButton: true,
+            autoclose: true,
+            autotimeout: 3000,
+            gap: 20,
+            distance: 20,
+            type: "outline",
+            position: "right top",
+          });
         } else {
-          alert("An error occurred. Please try again.");
+          new Notify({
+            status: "error",
+            title: "Terjadi kesalahan, silakan coba lagi.",
+
+            effect: "fade",
+            speed: 300,
+            customClass: null,
+            customIcon: null,
+            showIcon: true,
+            showCloseButton: true,
+            autoclose: true,
+            autotimeout: 3000,
+            gap: 20,
+            distance: 20,
+            type: "outline",
+            position: "right top",
+          });
         }
       }
     },

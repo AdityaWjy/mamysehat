@@ -70,6 +70,7 @@
 <script>
 import axios from "axios";
 import { mamyApi } from "../../services/api";
+import Notify from "simple-notify";
 
 export default {
   data() {
@@ -93,10 +94,45 @@ export default {
         localStorage.setItem("name", response.data.user_data.name);
 
         // Redirect ke halaman setelah login sukses
-        this.$router.push("/");
+        this.$router.push("/program");
+
+        new Notify({
+          status: "success",
+          title: "Anda berhasil login.",
+
+          effect: "fade",
+          speed: 300,
+          customClass: null,
+          customIcon: null,
+          showIcon: true,
+          showCloseButton: true,
+          autoclose: true,
+          autotimeout: 3000,
+          gap: 20,
+          distance: 20,
+          type: "outline",
+          position: "right top",
+        });
       } catch (error) {
         console.error("Login gagal:", error);
-        alert("Email atau password salah.");
+
+        new Notify({
+          status: "error",
+          title: "Email atau password salah.",
+
+          effect: "fade",
+          speed: 300,
+          customClass: null,
+          customIcon: null,
+          showIcon: true,
+          showCloseButton: true,
+          autoclose: true,
+          autotimeout: 3000,
+          gap: 20,
+          distance: 20,
+          type: "outline",
+          position: "right top",
+        });
       }
     },
   },

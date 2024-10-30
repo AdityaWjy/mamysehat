@@ -138,16 +138,29 @@ export default {
       localStorage.removeItem("user_id");
       localStorage.removeItem("name");
 
-      alert("Anda telah berhasil logout."); // Konfirmasi logout
+      new Notify({
+        status: "success",
+        title: "Anda telah berhasil logout.",
+
+        effect: "fade",
+        speed: 300,
+        customClass: null,
+        customIcon: null,
+        showIcon: true,
+        showCloseButton: true,
+        autoclose: true,
+        autotimeout: 3000,
+        gap: 20,
+        distance: 20,
+        type: "outline",
+        position: "right top",
+      });
+
       // Reload halaman untuk memastikan status di-reset
       location.reload();
 
       // Memaksa Vue untuk merender ulang navbar
       this.$forceUpdate();
-
-      if (this.$route.path !== "/") {
-        this.$router.push("/");
-      }
     },
   },
 };

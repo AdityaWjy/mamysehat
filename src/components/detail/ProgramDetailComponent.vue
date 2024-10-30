@@ -5,11 +5,11 @@
         <img
           :src="imgSrc + program.gambar"
           alt="image"
-          class="img-fluid shadow-lg w-100 h-100"
+          class="img-fluid shadow-lg w-100 h-100 mt-5 mt-xl-0 rounded"
         />
       </div>
       <div class="col-md-5">
-        <h4 class="fw-semibold">{{ program.nama_acara }}</h4>
+        <h4 class="fw-semibold mt-2 mt-xl-0">{{ program.nama_acara }}</h4>
         <p class="text-description">{{ program.deskripsi }}</p>
 
         <div class="personal-information">
@@ -173,7 +173,23 @@ export default {
       const token = localStorage.getItem("auth_token");
 
       if (!token) {
-        alert("Anda harus login terlebih dahulu untuk mendaftar.");
+        new Notify({
+          status: "warning",
+          title: "Anda harus login terlebih dahulu untuk mendaftar acara.",
+
+          effect: "fade",
+          speed: 300,
+          customClass: null,
+          customIcon: null,
+          showIcon: true,
+          showCloseButton: true,
+          autoclose: true,
+          autotimeout: 3000,
+          gap: 20,
+          distance: 20,
+          type: "outline",
+          position: "right top",
+        });
         this.$router.push("/login");
       } else {
         try {
@@ -205,16 +221,64 @@ export default {
           this.$router.push("/history");
         } catch (error) {
           if (error.response && error.response.status === 409) {
-            alert("Kamu sudah mendaftar untuk acara ini.");
+            new Notify({
+              status: "warning",
+              title: "Kamu sudah mendaftar untuk acara ini.",
+
+              effect: "fade",
+              speed: 300,
+              customClass: null,
+              customIcon: null,
+              showIcon: true,
+              showCloseButton: true,
+              autoclose: true,
+              autotimeout: 3000,
+              gap: 20,
+              distance: 20,
+              type: "outline",
+              position: "right top",
+            });
           }
           if (error.response && error.response.status === 403) {
-            alert("Acara tidak aktif atau sudah ditutup");
+            new Notify({
+              status: "warning",
+              title: "Acara tidak aktif atau sudah ditutup",
+
+              effect: "fade",
+              speed: 300,
+              customClass: null,
+              customIcon: null,
+              showIcon: true,
+              showCloseButton: true,
+              autoclose: true,
+              autotimeout: 3000,
+              gap: 20,
+              distance: 20,
+              type: "outline",
+              position: "right top",
+            });
           } else {
             console.log(
               "Error pendaftaran: ",
               error.response ? error.response.data : error
             );
-            alert("Gagal mendaftar acara");
+            new Notify({
+              status: "error",
+              title: "Gagal mendaftar acara.",
+
+              effect: "fade",
+              speed: 300,
+              customClass: null,
+              customIcon: null,
+              showIcon: true,
+              showCloseButton: true,
+              autoclose: true,
+              autotimeout: 3000,
+              gap: 20,
+              distance: 20,
+              type: "outline",
+              position: "right top",
+            });
           }
         }
       }
