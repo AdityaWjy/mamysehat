@@ -11,7 +11,7 @@
 
       <div class="col-md-5 d-flex align-items-center justify-items-center">
         <!-- form login -->
-        <form @submit.prevent="loginUser" class="mt-3 mt-xl-0 ms-xl-5">
+        <form @submit.prevent="loginUser" class="mt-4 mt-xl-0 ms-xl-5">
           <h3>Login Pengguna</h3>
 
           <div class="row mb-3">

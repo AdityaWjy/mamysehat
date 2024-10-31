@@ -17,9 +17,15 @@
           <div class="row mb-3">
             <div class="col-md-6">
               <label for="name" class="form-label fw-semibold"
-                >Nama Lengkap:</label
+                >Nama Lengkap (Beserta gelar):</label
               >
-              <input v-model="name" type="text" class="form-control" required />
+
+              <input
+                v-model="name"
+                type="text"
+                class="form-control border-primary-subtle"
+                required
+              />
             </div>
             <div class="col-md-6">
               <label for="institusi" class="form-label fw-semibold"
@@ -28,7 +34,7 @@
               <input
                 v-model="institusi"
                 type="text"
-                class="form-control"
+                class="form-control mt-xl-4 border-primary-subtle"
                 required
               />
             </div>
@@ -42,13 +48,18 @@
               <input
                 v-model="email"
                 type="email"
-                class="form-control"
+                class="form-control border-primary-subtle"
                 required
               />
             </div>
             <div class="col-md-6">
               <label for="nik" class="form-label fw-semibold">NIK:</label>
-              <input v-model="nik" type="text" class="form-control" required />
+              <input
+                v-model="nik"
+                type="text"
+                class="form-control border-primary-subtle"
+                required
+              />
             </div>
           </div>
 
@@ -57,7 +68,12 @@
               <label for="wa" class="form-label fw-semibold"
                 >No. WhatsApp:</label
               >
-              <input v-model="wa" type="text" class="form-control" required />
+              <input
+                v-model="wa"
+                type="text"
+                class="form-control border-primary-subtle"
+                required
+              />
             </div>
             <div class="col-md-6">
               <label for="kotaAsal" class="form-label fw-semibold"
@@ -66,7 +82,7 @@
               <input
                 v-model="kota_asal"
                 type="text"
-                class="form-control"
+                class="form-control border-primary-subtle"
                 required
               />
             </div>
@@ -80,7 +96,7 @@
               <input
                 v-model="profesi"
                 type="text"
-                class="form-control"
+                class="form-control border-primary-subtle"
                 required
                 :disabled="isDokterSpesialis"
                 :placeholder="
@@ -90,7 +106,12 @@
 
               <div class="form-check mt-3">
                 <input
-                  class="form-check-input"
+                  :class="[
+                    'form-check-input',
+                    isDokterSpesialis
+                      ? 'border-success'
+                      : 'border-primary-subtle',
+                  ]"
                   type="checkbox"
                   value=""
                   id="flexCheckDefault"
@@ -108,7 +129,7 @@
               <input
                 v-model="password"
                 type="password"
-                class="form-control"
+                class="form-control border-primary-subtle"
                 required
               />
             </div>
@@ -123,7 +144,7 @@
               <input
                 v-model="confirmPassword"
                 type="password"
-                class="form-control"
+                class="form-control border-primary-subtle"
                 required
               />
             </div>
