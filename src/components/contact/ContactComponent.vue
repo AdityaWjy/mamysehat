@@ -45,11 +45,11 @@
               <img
                 src="../contact/assets/envelope-plus.png"
                 width="25"
-                class="me-2 mb-2 mb-md-0"
+                class="me-2 mb-2 mb-md-0 ms-xl-1"
               />
               <a
                 href="mailto:info.mamysehatacademy@gmail.com"
-                class="text-decoration-none text-dark"
+                class="text-decoration-none text-dark ms-xl-1"
                 target="_blank"
                 >info.mamysehatacademy@gmail.com</a
               >
@@ -60,13 +60,13 @@
               <img
                 src="../contact/assets/phone.png"
                 width="25"
-                class="me-2 mb-2 mb-md-0"
+                class="me-2 mb-2 mb-md-0 ms-xl-1"
               />
               <a
-                href="https://wa.me/+6285179642079"
-                class="text-decoration-none text-dark"
+                href="https://wa.me/+6285143000100"
+                class="text-decoration-none text-dark ms-xl-1"
                 target="_blank"
-                >+62 857-7964-2079</a
+                >+62 851-4300-0100</a
               >
             </li>
           </ul>

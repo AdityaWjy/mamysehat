@@ -14,8 +14,15 @@
                 <span class="blueOcean">Academy</span>
               </h1>
 
-              <p class="capitalize fw-normal w-75 mb-4" style="font-size: 18px">
-                Mamy Academy hadir untuk mendukung para tenaga kesehatan, dokter umum, dan spesialis dalam memperluas pengetahuan dan keterampilan mereka. Kursus-kursus kami dirancang oleh para ahli untuk memberikan pelatihan yang berkualitas, relevan dengan industri, dan terkini.
+              <p
+                class="capitalize text-content fw-normal mb-4"
+                style="font-size: 18px"
+              >
+                Mamy Academy hadir untuk mendukung para tenaga kesehatan, dokter
+                umum, dan spesialis dalam memperluas pengetahuan dan memperluas
+                pengetahuan dan keterampilan. Kegiatan kami dirancang oleh para
+                ahli untuk memberikan pelatihan yang berkualitas, relevan dan
+                terupdate.
               </p>
 
               <router-link to="/program" class="btn-custom text-decoration-none"
@@ -50,7 +57,10 @@
               </h2>
 
               <p class="capitalize fw-normal" style="font-size: 14px">
-                Mamy Academy hadir untuk mendukung para tenaga kesehatan, dokter umum, dan spesialis dalam memperluas pengetahuan dan keterampilan mereka. Kursus-kursus kami dirancang oleh para ahli untuk memberikan pelatihan yang berkualitas, relevan dengan industri, dan terkini.
+                Mamy Academy hadir untuk mendukung para tenaga kesehatan, dokter
+                umum, dan spesialis dalam memperluas pengetahuan dan
+                keterampilan. Kegiatan kami dirancang oleh para ahli untuk
+                memberikan pelatihan yang berkualitas, relevan dan terupdate.
               </p>
 
               <router-link
@@ -85,6 +95,10 @@ h2 {
 
 .hero {
   margin-top: 100px;
+}
+
+.text-content {
+  width: 600px;
 }
 
 @media (max-width: 500px) {

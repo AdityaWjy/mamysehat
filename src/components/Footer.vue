@@ -106,11 +106,13 @@
                   class="mb-2"
                   width="25"
                 />
-                <p class="text-center text-xl-start pt-1">@mamysehat.id</p>
+                <p class="text-center text-xl-start pt-1">
+                  @mamysehatacademy.id
+                </p>
               </a>
 
               <a
-                href="https://wa.me/+6285179642079"
+                href="https://wa.me/+6285143000100"
                 target="_blank"
                 class="block text-decoration-none text-white d-xl-flex align-items-center justify-align-center gap-2"
               >
@@ -120,7 +122,9 @@
                   class="mb-2"
                   width="20"
                 />
-                <p class="text-center text-xl-start pt-2">+62 857-7964-2079</p>
+                <p class="text-center text-xl-start pt-2 ms-xl-1">
+                  +62 851-4300-0100
+                </p>
               </a>
             </div>
             <!-- Grid column -->
@@ -136,7 +140,7 @@
         style="background-color: rgba(0, 0, 0, 0.05)"
       >
         © 2024 Copyright: <br />
-        <a class="text-reset fw-bold" href="https://wa.me/+6285179642079"
+        <a class="text-reset fw-bold" href="https://wa.me/+6285143000100"
           >MamySehat Academy</a
         >
       </div>

@@ -38,13 +38,11 @@
             <p class="blueOcean content-program mb-0 fw-semibold">
               dr. Ni Ketut Prayoga
             </p>
-            <p class="text-white-50 mb-2 content-program">
-              Staff Engineer, Algolia
-            </p>
+            <p class="text-white-50 mb-2 content-program">Perawat Ruang ICU</p>
             <p class="text-white content-program fw-normal">
-              "Webinar ini luar biasa! SKP selalu maksimal, sangat bermanfaat.
+              Webinar ini luar biasa! SKP selalu maksimal, sangat bermanfaat.
               Layanan adminnya cepat dan responsif, bikin semua urusan jadi
-              mudah dan lancar. Terima kasih!"
+              mudah dan lancar. Terima kasih!
             </p>
           </div>
         </div>
