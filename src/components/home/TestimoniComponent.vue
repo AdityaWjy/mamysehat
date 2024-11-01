@@ -5,14 +5,10 @@
     >
       <h1 class="blueOcean font-semibold">Testimoni</h1>
       <p class="capitalize text-center fw-normal text-content">
-<<<<<<< HEAD
         Dengan materi yang komprehensif dan diajarkan oleh para ahli di
         bidangnya, kami telah membantu banyak profesional kesehatan mencapai
         standar tertinggi dalam pelayanan mereka. Temukan inspirasi dari
         pengalaman mereka yang telah merasakan manfaat dari pelatihan kami.
-=======
-        Dengan materi yang komprehensif dan diajarkan oleh para ahli di bidangnya, kami telah membantu banyak profesional kesehatan mencapai standar tertinggi dalam pelayanan mereka. Temukan inspirasi dari pengalaman mereka yang telah merasakan manfaat dari pelatihan kami.
->>>>>>> caceaaa8f08fab5b776939b911207c2b43ac9e1a
       </p>
     </div>
 

@@ -5,14 +5,10 @@
     >
       <h1 class="blueOcean font-semibold">Program</h1>
       <p class="capitalize text-center fw-normal text-content">
-<<<<<<< HEAD
         Setiap program kami disusun berdasarkan standar tertinggi, dengan materi
         yang up-to-date dan dapat langsung diaplikasikan dalam praktik
         sehari-hari. Jadilah bagian dari komunitas profesional yang berkomitmen
         untuk memberikan layanan kesehatan terbaik!
-=======
-        Setiap program kami disusun berdasarkan standar tertinggi, dengan materi yang up-to-date dan dapat langsung diaplikasikan dalam praktik sehari-hari. Jadilah bagian dari komunitas profesional yang berkomitmen untuk memberikan layanan kesehatan terbaik!
->>>>>>> caceaaa8f08fab5b776939b911207c2b43ac9e1a
       </p>
     </div>
 
