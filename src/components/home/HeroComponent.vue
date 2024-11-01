@@ -15,11 +15,7 @@
               </h1>
 
               <p class="capitalize fw-normal w-75 mb-4" style="font-size: 18px">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit
-                amet nulla auctor,
-                <span class="blueOcean font-bold">vestibulum</span> magna.
-                <span class="blueOcean font-bold">vestibulum</span> magna sed,
-                convallis ex.
+                Mamy Academy hadir untuk mendukung para tenaga kesehatan, dokter umum, dan spesialis dalam memperluas pengetahuan dan keterampilan mereka. Kursus-kursus kami dirancang oleh para ahli untuk memberikan pelatihan yang berkualitas, relevan dengan industri, dan terkini.
               </p>
 
               <router-link to="/program" class="btn-custom text-decoration-none"
@@ -54,11 +50,7 @@
               </h2>
 
               <p class="capitalize fw-normal" style="font-size: 14px">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit
-                amet nulla auctor,
-                <span class="blueOcean font-bold">vestibulum</span> magna.
-                <span class="blueOcean font-bold">vestibulum</span> magna sed,
-                convallis ex.
+                Mamy Academy hadir untuk mendukung para tenaga kesehatan, dokter umum, dan spesialis dalam memperluas pengetahuan dan keterampilan mereka. Kursus-kursus kami dirancang oleh para ahli untuk memberikan pelatihan yang berkualitas, relevan dengan industri, dan terkini.
               </p>
 
               <router-link
