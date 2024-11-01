@@ -22,7 +22,7 @@
               Ns. Diah Putri Cantika
             </p>
             <p class="text-white-50 mb-2 content-program mt-0">
-              Apt. Santika Prima Mustika
+              Perawat ruang ICU
             </p>
             <p class="text-white content-program">
               Webinar di sini luar biasa! SKP yang diberikan selalu maksimal,
@@ -38,7 +38,7 @@
             <p class="blueOcean content-program mb-0 fw-semibold">
               dr. Ni Ketut Prayoga
             </p>
-            <p class="text-white-50 mb-2 content-program">Perawat Ruang ICU</p>
+            <p class="text-white-50 mb-2 content-program">Dokter IGD</p>
             <p class="text-white content-program fw-normal">
               Webinar ini luar biasa! SKP selalu maksimal, sangat bermanfaat.
               Layanan adminnya cepat dan responsif, bikin semua urusan jadi
