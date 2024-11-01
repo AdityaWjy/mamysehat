@@ -17,8 +17,8 @@
                 <img :src="logoSrc" alt="Gafin Labs" class="w-75" />
               </router-link>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                Lembaga pelatihan yang berfokus pada kesehatan. Memberikan
+                program kegiatan yang edukatif, komprehensif, dan inovatif.
               </p>
             </div>
             <!-- Grid column -->
