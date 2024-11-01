@@ -5,11 +5,10 @@
     >
       <h1 class="blueOcean font-semibold">Testimoni</h1>
       <p class="capitalize text-center fw-normal text-content">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet
-        nulla auctor,
-        <span class="blueOcean font-bold">vestibulum</span> magna.
-        <span class="blueOcean font-bold">vestibulum</span> magna sed, convallis
-        ex.
+        Dengan materi yang komprehensif dan diajarkan oleh para ahli di
+        bidangnya, kami telah membantu banyak profesional kesehatan mencapai
+        standar tertinggi dalam pelayanan mereka. Temukan inspirasi dari
+        pengalaman mereka yang telah merasakan manfaat dari pelatihan kami.
       </p>
     </div>
 
@@ -19,13 +18,16 @@
       <div class="background-box mb-2 mb-xl-0">
         <div class="d-flex rounded" style="background-color: #1e293b">
           <div class="py-2 px-2 p-xl-3">
-            <p class="blueOcean content-program">Sarah Dayon</p>
-            <p class="text-white-50 mb-2 content-program">
-              Staff Engineer, Algolia
+            <p class="blueOcean content-program mb-0 fw-semibold">
+              Ns. Diah Putri Cantika
+            </p>
+            <p class="text-white-50 mb-2 content-program mt-0">
+              Apt. Santika Prima Mustika
             </p>
             <p class="text-white content-program">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit
-              amet nulla auctor. Sed sit amet nulla auctor.
+              Webinar di sini luar biasa! SKP yang diberikan selalu maksimal,
+              benar-benar sesuai harapan saya sebagai tenaga profesional.
+              Layanan adminnya juga sangat responsif dan cepat membantu.
             </p>
           </div>
         </div>
@@ -33,13 +35,16 @@
       <div class="background-box mb-2 mb-xl-0">
         <div class="d-flex rounded" style="background-color: #1e293b">
           <div class="py-2 px-2 p-xl-3">
-            <p class="blueOcean content-program">Sarah Dayon</p>
+            <p class="blueOcean content-program mb-0 fw-semibold">
+              dr. Ni Ketut Prayoga
+            </p>
             <p class="text-white-50 mb-2 content-program">
               Staff Engineer, Algolia
             </p>
             <p class="text-white content-program fw-normal">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit
-              amet nulla auctor. Sed sit amet nulla auctor.
+              "Webinar ini luar biasa! SKP selalu maksimal, sangat bermanfaat.
+              Layanan adminnya cepat dan responsif, bikin semua urusan jadi
+              mudah dan lancar. Terima kasih!"
             </p>
           </div>
         </div>
@@ -50,17 +55,17 @@
 
 <style scoped>
 .background-box {
-  width: 460px;
+  width: 490px;
 }
 
 .text-content {
-  width: 800px;
+  width: 900px;
   font-size: 18px;
 }
 
 @media (max-width: 500px) {
   .text-content {
-    width: 270px;
+    width: 320px;
     font-size: 10px;
   }
 

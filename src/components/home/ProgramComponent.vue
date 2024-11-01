@@ -5,11 +5,10 @@
     >
       <h1 class="blueOcean font-semibold">Program</h1>
       <p class="capitalize text-center fw-normal text-content">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet
-        nulla auctor,
-        <span class="blueOcean font-bold">vestibulum</span> magna.
-        <span class="blueOcean font-bold">vestibulum</span> magna sed, convallis
-        ex.
+        Setiap program kami disusun berdasarkan standar tertinggi, dengan materi
+        yang up-to-date dan dapat langsung diaplikasikan dalam praktik
+        sehari-hari. Jadilah bagian dari komunitas profesional yang berkomitmen
+        untuk memberikan layanan kesehatan terbaik!
       </p>
     </div>
 
@@ -97,7 +96,7 @@ img {
 
 @media (max-width: 500px) {
   .text-content {
-    width: 270px;
+    width: 320px;
     font-size: 10px;
   }
 
