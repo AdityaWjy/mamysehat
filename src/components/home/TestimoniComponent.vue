@@ -5,11 +5,7 @@
     >
       <h1 class="blueOcean font-semibold">Testimoni</h1>
       <p class="capitalize text-center fw-normal text-content">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet
-        nulla auctor,
-        <span class="blueOcean font-bold">vestibulum</span> magna.
-        <span class="blueOcean font-bold">vestibulum</span> magna sed, convallis
-        ex.
+        Dengan materi yang komprehensif dan diajarkan oleh para ahli di bidangnya, kami telah membantu banyak profesional kesehatan mencapai standar tertinggi dalam pelayanan mereka. Temukan inspirasi dari pengalaman mereka yang telah merasakan manfaat dari pelatihan kami.
       </p>
     </div>
 
