@@ -39,7 +39,7 @@
           target="_blank"
           class="underline fw-medium text-white font-small"
         >
-          Link Whatsapp
+          Link Grup Whatsapp
         </a>
       </div>
     </div>
