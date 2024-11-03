@@ -57,6 +57,7 @@
               <input
                 v-model="nik"
                 type="text"
+                inputmode="numeric"
                 class="form-control border-primary-subtle"
                 required
               />

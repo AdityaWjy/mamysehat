@@ -2,14 +2,9 @@
   <div class="training">
     <div class="container mt-5">
       <h1 class="text-center text-xl-start blueOcean">Riwayat pendaftaran</h1>
-      <p class="capitalize text-center text-xl-start fw-normal text-content">
-        Lorem ipsum dolor sit amet consectetur. Tempus tincidunt etiam eget elit
-        id imperdiet et. Cras eu sit dignissim lorem nibh et. Ac cum eget
-        habitasse in velit fringilla feugiat senectus in.
-      </p>
 
       <!-- Responsive List of Program Cards -->
-      <div class="row row-card mt-4 gap-5">
+      <div class="row row-card mt-5 gap-5">
         <div
           class="col-12 col-md-6 col-lg-4 d-flex justify-content-center"
           v-for="history in historys"

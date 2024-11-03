@@ -25,11 +25,21 @@
 
         <br />
         <a
-          :href="history.wa_link"
+          href="https://wa.me/+6285143000100"
           target="_blank"
           class="text-decoration-none fw-medium text-white font-small"
         >
           CP: Hashfi 0851-4300-0100
+        </a>
+
+        <br />
+
+        <a
+          :href="history.wa_link"
+          target="_blank"
+          class="underline fw-medium text-white font-small"
+        >
+          Link Whatsapp
         </a>
       </div>
     </div>
