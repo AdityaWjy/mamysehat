@@ -6,8 +6,6 @@ services:
     image: academy-mamysehat-web
     container_name: academy-mamysehat-web
     restart: unless-stopped
-    volumes:
-      - ./docker/php/local.ini:/usr/local/etc/php/conf.d/local.ini
     networks:
       - academy-mamysehat
     ports:
