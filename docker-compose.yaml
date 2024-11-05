@@ -1,0 +1,15 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: academy-mamysehat-web
+    container_name: academy-mamysehat-web
+    restart: unless-stopped
+    networks:
+      - academy-mamysehat
+    ports:
+      - "8005:80"
+
+networks:
+  academy-mamysehat:
